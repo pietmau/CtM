@@ -3,6 +3,8 @@ package com.bowling.mauriziopietrantuono.bowling.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_NUMBER_OF_FRAMES;
+import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_SCORE;
 import static java.util.Collections.unmodifiableList;
 
 public final class Match {
@@ -27,7 +29,7 @@ public final class Match {
         int numberOfFrames = 0;
         int currentBall = 0;
 
-        for (; currentBall < balls.size() && numberOfFrames < Constants.MAX_NUMBER_OF_FRAMES; currentBall++) {
+        for (; currentBall < balls.size() && numberOfFrames < MAX_NUMBER_OF_FRAMES; currentBall++) {
             if (isAStrike(currentBall)) {
                 numberOfFrames++;
                 continue;
@@ -38,7 +40,7 @@ public final class Match {
                 }
             }
         }
-        if (numberOfFrames < Constants.MAX_NUMBER_OF_FRAMES) {
+        if (numberOfFrames < MAX_NUMBER_OF_FRAMES) {
             return true;
         }
 
@@ -58,7 +60,7 @@ public final class Match {
     }
 
     private boolean isAStrike(int currentBall) {
-        return balls.get(currentBall).getScore() == Constants.MAX_SCORE;
+        return balls.get(currentBall).getScore() == MAX_SCORE;
     }
 
     private boolean isLastFrameAStrike(int currentBall) {
@@ -68,7 +70,7 @@ public final class Match {
     private boolean isLastFrameASpare(int currentBall) {
         int latsPlay = balls.get(currentBall - 1).getScore();
         int secondLastplay = balls.get(currentBall - 2).getScore();
-        return (latsPlay + secondLastplay) == Constants.MAX_SCORE;
+        return (latsPlay + secondLastplay) == MAX_SCORE;
     }
 
     public List<Ball> getBalls() {

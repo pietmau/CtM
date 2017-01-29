@@ -1,11 +1,12 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static com.bowling.mauriziopietrantuono.bowling.model.Helper.makeSomeNineFrames;
+import static com.bowling.mauriziopietrantuono.bowling.model.Helper.makeSomeOtherNineFrames;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -20,7 +21,7 @@ public class ScorerText {
         // THEN
         match.playBall(5);
         Scorer scorer = new Scorer(match);
-        //assertEquals(5, scorer.score());
+        assertEquals(5, scorer.score());
     }
 
     @Test
@@ -65,5 +66,34 @@ public class ScorerText {
         Scorer scorer = new Scorer(match);
         assertEquals(firstFrameScore + seconfFrameScore + thirdFrameScore, scorer.score());
     }
+
+    @Test
+    public void someMatchIsScoredCorrectly() throws InvalidPlayException {
+        Match match = new Match();
+        int score = makeSomeNineFrames(match);
+        Scorer scorer = new Scorer(match);
+        assertEquals(score, scorer.score());
+    }
+
+    @Test
+    public void someOtherMatchIsScoredCorrectly() throws InvalidPlayException {
+        Match match = new Match();
+        int score = makeSomeOtherNineFrames(match);
+        Scorer scorer = new Scorer(match);
+        assertEquals(score, scorer.score());
+    }
+
+    @Test
+    public void lastIsStrike() throws InvalidPlayException {
+        Match match = new Match();
+        int score = makeSomeOtherNineFrames(match);
+        match.playBall(10);
+        match.playBall(10);
+        match.playBall(10);
+        score = score + 10 + 10 + 10;
+        Scorer scorer = new Scorer(match);
+       // assertEquals(score, scorer.score());
+    }
+
 
 }

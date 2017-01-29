@@ -3,6 +3,9 @@ package com.bowling.mauriziopietrantuono.bowling.model;
 
 import java.util.List;
 
+import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_NUMBER_OF_FRAMES;
+import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_SCORE;
+
 public class Scorer {
     private final List<Ball> balls;
 
@@ -12,21 +15,30 @@ public class Scorer {
 
     public int score() {
         int score = 0;
-        for (int i = 0; i < balls.size(); i++) {
+        int frames = 0;
+
+        for (int i = 0; i < balls.size() && frames < MAX_NUMBER_OF_FRAMES; i++) {
 
             if (isaStrike(i)) {
-                score += Constants.MAX_SCORE;
+                score += MAX_SCORE;
                 score += getNextTwoScores(i);
                 continue;
             }
 
             if (isASpare(i)) {
-                score += Constants.MAX_SCORE;
+                score += MAX_SCORE;
                 i++;
                 score += getNextScore(i);
                 continue;
+
+            } else {
+                score += balls.get(i).getScore();
+                i++;
+                if (i < balls.size()) {
+                    score += balls.get(i).getScore();
+                }
             }
-            score += balls.get(i).getScore();
+
 
         }
         return score;
@@ -43,12 +55,14 @@ public class Scorer {
         if (i > balls.size() - 2) {
             return false;
         }
-        return (balls.get(i).getScore() + balls.get(i + 1).getScore()) == Constants.MAX_SCORE;
+        boolean b = (balls.get(i).getScore() + balls.get(i + 1).getScore()) == MAX_SCORE;
+
+        return b;
     }
 
     private boolean isaStrike(int index) {
         Ball ball = balls.get(index);
-        return ball.getScore() == Constants.MAX_SCORE;
+        return ball.getScore() == MAX_SCORE;
     }
 
     private int getNextTwoScores(int i) {
