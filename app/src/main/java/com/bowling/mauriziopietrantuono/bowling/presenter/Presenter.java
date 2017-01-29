@@ -35,7 +35,7 @@ public class Presenter {
 
     private void updateGame(int currentPlay) {
         try {
-            bowlingMatch.playBall(currentPlay);
+            bowlingMatch.throwBall(currentPlay);
             updateView();
         } catch (InvalidPlayException e) {
             view.setError(e.getMessage());

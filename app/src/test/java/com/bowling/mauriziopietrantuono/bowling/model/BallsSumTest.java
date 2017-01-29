@@ -14,8 +14,8 @@ public class BallsSumTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(8);
-        match.playBall(8);
+        match.throwBall(8);
+        match.throwBall(8);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class BallsSumTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(8);
+        match.throwBall(8);
     }
 
     @Test
@@ -31,8 +31,8 @@ public class BallsSumTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
     }
 
     @Test
@@ -40,9 +40,9 @@ public class BallsSumTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(5);
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
 
     }
 
@@ -51,10 +51,10 @@ public class BallsSumTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(5);
-        match.playBall(5);
-        match.playBall(5);
-        match.playBall(10);
+        match.throwBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
+        match.throwBall(10);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -63,9 +63,9 @@ public class BallsSumTest {
         BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i < 9; i++) {
-            match.playBall(10);
+            match.throwBall(10);
         }
-        match.playBall(9);
-        match.playBall(9);
+        match.throwBall(9);
+        match.throwBall(9);
     }
 }

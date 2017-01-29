@@ -14,19 +14,20 @@ public class Representer {
     private List<Ball> balls;
 
     public String represent(BowlingMatch match) {
-        StringBuilder stringBuilder = new StringBuilder();
-        balls = match.getBalls();
-        if (balls == null || balls.isEmpty()) {
-            return null;
-        }
-        int currentBall = 0;
-
-        currentBall = appendRegularFrames(stringBuilder, currentBall);
-
-        stringBuilder.append(SEPARATOR);
-
-        appendBonusFrames(stringBuilder, currentBall);
-        return stringBuilder.toString();
+//        StringBuilder stringBuilder = new StringBuilder();
+//        balls = match.getBalls();
+//        if (balls == null || balls.isEmpty()) {
+//            return null;
+//        }
+//        int currentBall = 0;
+//
+//        currentBall = appendRegularFrames(stringBuilder, currentBall);
+//
+//        stringBuilder.append(SEPARATOR);
+//
+//        appendBonusFrames(stringBuilder, currentBall);
+//        return stringBuilder.toString();
+        return null;
     }
 
 

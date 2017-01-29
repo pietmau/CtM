@@ -15,7 +15,7 @@ public class MatchTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(5);
+        match.throwBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -23,7 +23,7 @@ public class MatchTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(-1);
+        match.throwBall(-1);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -31,7 +31,7 @@ public class MatchTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(11);
+        match.throwBall(11);
     }
 
 
@@ -40,7 +40,7 @@ public class MatchTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(10);
+        match.throwBall(10);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -49,7 +49,7 @@ public class MatchTest {
         BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i <= 22; i++) {
-            match.playBall(5);
+            match.throwBall(5);
         }
         fail();
     }
@@ -61,11 +61,11 @@ public class MatchTest {
         BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i < 10; i++) {
-            match.playBall(10);
+            match.throwBall(10);
         }
         // this should be OK
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -74,14 +74,14 @@ public class MatchTest {
         BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i < 10; i++) {
-            match.playBall(10);
+            match.throwBall(10);
         }
         // this should be OK
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
 
         // this should not be possible
-        match.playBall(5);
+        match.throwBall(5);
     }
 
     @Test
@@ -90,14 +90,14 @@ public class MatchTest {
         BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i < 9; i++) {
-            match.playBall(10);
+            match.throwBall(10);
         }
         //last frame
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
 
         // this should be OK
-        match.playBall(5);
+        match.throwBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -106,17 +106,17 @@ public class MatchTest {
         BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i < 9; i++) {
-            match.playBall(10);
+            match.throwBall(10);
         }
         //last frame
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
 
         // this should be OK
-        match.playBall(5);
+        match.throwBall(5);
 
         // this should not be possible
-        match.playBall(5);
+        match.throwBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -127,11 +127,11 @@ public class MatchTest {
         makeNineFrames(match);
 
         // last Frame
-        match.playBall(0);
-        match.playBall(0);
+        match.throwBall(0);
+        match.throwBall(0);
 
         // this should not be possible
-        match.playBall(0);
+        match.throwBall(0);
     }
 
     @Test
@@ -142,11 +142,11 @@ public class MatchTest {
         makeNineFrames(match);
 
         //last frame
-        match.playBall(10);
+        match.throwBall(10);
 
         // this should be OK
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -157,14 +157,14 @@ public class MatchTest {
         makeNineFrames(match);
 
         //last frame
-        match.playBall(10);
+        match.throwBall(10);
 
         // this should be OK
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
 
         // this should not be possible
-        match.playBall(5);
+        match.throwBall(5);
     }
 
     @Test
@@ -175,11 +175,11 @@ public class MatchTest {
         makeNineFrames(match);
 
         //last frame
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
 
         // this should be OK
-        match.playBall(5);
+        match.throwBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -190,38 +190,38 @@ public class MatchTest {
         makeNineFrames(match);
 
         //last frame
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
 
         // this should be OK
-        match.playBall(5);
+        match.throwBall(5);
 
         // this should not be possible
-        match.playBall(5);
+        match.throwBall(5);
     }
 
     private void makeNineFrames(BowlingMatch match) throws InvalidPlayException {
-        match.playBall(10);
+        match.throwBall(10);
 
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
 
-        match.playBall(10);
+        match.throwBall(10);
 
-        match.playBall(0);
-        match.playBall(0);
+        match.throwBall(0);
+        match.throwBall(0);
 
-        match.playBall(10);
+        match.throwBall(10);
 
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
 
-        match.playBall(0);
-        match.playBall(0);
+        match.throwBall(0);
+        match.throwBall(0);
 
-        match.playBall(10);
+        match.throwBall(10);
 
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
     }
 }

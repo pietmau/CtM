@@ -20,11 +20,11 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             // last Frame
-            match.playBall(0);
-            match.playBall(0);
+            match.throwBall(0);
+            match.throwBall(0);
             try {
                 // this should not be possible
-                match.playBall(0);
+                match.throwBall(0);
                 fail();
             } catch (InvalidPlayException e) {
             }
@@ -38,11 +38,11 @@ public class RandomMatchTest {
             // nine random plays
             makeNineRandomFrames(match);
             //last frame
-            match.playBall(10);
+            match.throwBall(10);
 
             // this should be OK
-            match.playBall(5);
-            match.playBall(5);
+            match.throwBall(5);
+            match.throwBall(5);
         }
     }
 
@@ -54,15 +54,15 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             //last frame
-            match.playBall(10);
+            match.throwBall(10);
 
             // this should be OK
-            match.playBall(5);
-            match.playBall(5);
+            match.throwBall(5);
+            match.throwBall(5);
 
             try {
                 // this should not be possible
-                match.playBall(5);
+                match.throwBall(5);
                 fail();
             } catch (InvalidPlayException e) {
             }
@@ -77,10 +77,10 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             //last frame
-            match.playBall(5);
-            match.playBall(5);
+            match.throwBall(5);
+            match.throwBall(5);
             // thsi should be possible
-            match.playBall(5);
+            match.throwBall(5);
         }
     }
 
@@ -92,11 +92,11 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             //last frame
-            match.playBall(5);
-            match.playBall(5);
+            match.throwBall(5);
+            match.throwBall(5);
 
             // this should be possible
-            match.playBall(5);
+            match.throwBall(5);
         }
     }
 
@@ -109,14 +109,14 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             // last frame
-            match.playBall(5);
-            match.playBall(5);
+            match.throwBall(5);
+            match.throwBall(5);
 
             // this should be OK
-            match.playBall(5);
+            match.throwBall(5);
             try {
                 // this should not be possible
-                match.playBall(5);
+                match.throwBall(5);
                 fail();
             } catch (InvalidPlayException e) {
             }
@@ -131,14 +131,14 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             //last frame
-            match.playBall(5);
-            match.playBall(5);
+            match.throwBall(5);
+            match.throwBall(5);
 
             // this should be OK
-            match.playBall(5);
+            match.throwBall(5);
             try {
                 // this should not be possible
-                match.playBall(5);
+                match.throwBall(5);
                 fail();
             } catch (InvalidPlayException e) {
             }
@@ -151,15 +151,15 @@ public class RandomMatchTest {
         for (int i = 0; i < 9; i++) {
             int rand = random.nextInt(3);
             if (rand == 0) {
-                match.playBall(10);
+                match.throwBall(10);
             }
             if (rand == 1) {
-                match.playBall(5);
-                match.playBall(5);
+                match.throwBall(5);
+                match.throwBall(5);
             }
             if (rand == 2) {
-                match.playBall(random.nextInt(5));
-                match.playBall(random.nextInt(5));
+                match.throwBall(random.nextInt(5));
+                match.throwBall(random.nextInt(5));
             }
         }
     }

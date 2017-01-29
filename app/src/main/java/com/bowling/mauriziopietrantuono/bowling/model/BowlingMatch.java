@@ -5,111 +5,81 @@ import java.util.List;
 
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_NUMBER_OF_FRAMES;
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_SCORE;
-import static java.util.Collections.unmodifiableList;
 
 public class BowlingMatch {
-    private final List<Ball> balls = new ArrayList<>();
+    private List<Frame> frames = new ArrayList<>();
+    private List<Bonus> bonuses = new ArrayList<>();
+    int numberOfBounusesReceived = 0;
+    private Game currentGame = new Game();
 
-    public void playBall(int score) throws InvalidPlayException {
+    public void throwBall(int score) throws InvalidPlayException {
         if (score < 0 || score > 10) {
-            throw new InvalidPlayException("Invalid score");
+            throw new InvalidPlayException("Invalid throw " + score);
         }
-        checkBalls(score);
-        balls.add(new Ball(score));
+        checkNumberOfFramesAndBounuses();
+
+        if (playingNomalFrames()) {
+            playNormalFrame(score);
+            return;
+        } else if (playingBonuses()) {
+            playBonuses(score);
+            return;
+        }
+        throw new RuntimeException("We should not be here");
     }
 
-    private void checkBalls(int score) throws InvalidPlayException {
-        if (!canPlayNext()) {
-            throw new InvalidPlayException("Too many plays " + balls.size() + "!");
+    private void playBonuses(int score) {
+        bonuses.add(new Bonus(score));
+    }
+
+    private void playNormalFrame(int score) throws InvalidPlayException {
+        checkCurrentGame(score);
+        playGame(score);
+    }
+
+    private void playGame(int score) {
+        if (score == MAX_SCORE) {
+            currentGame = new Game();
+            Frame frame = new Frame();
+            frame.first = new Ball(score);
+            frames.add(frame);
         }
-        if (!isValidSequence(score)) {
-            throw new InvalidPlayException("Invalid play");
+        currentGame.setBall(new Ball(score));
+        if (currentGame.isFinished()) {
+            Frame frame = new Frame();
+            frame.first = currentGame.firstBall;
+            frame.second = currentGame.secondBall;
+            frames.add(frame);
+            currentGame = new Game();
+        }
+        if (islastGrame()) {
         }
     }
 
-    private boolean isValidSequence(int score) {
-        int numberOfFrames = 0;
-        int currentBall = 0;
+    private boolean islastGrame() {
+        return frames.size() == MAX_NUMBER_OF_FRAMES;
+    }
 
-        for (; currentBall < balls.size() && numberOfFrames < MAX_NUMBER_OF_FRAMES; currentBall++) {
-            if (isAStrike(currentBall)) {
-                numberOfFrames++;
-                continue;
-            }
-            if (isTheLastBall(currentBall)) {
-                if (sumIsBiggerThanTen(score, currentBall)) {
-                    return false;
-                }
-                continue;
-            }
-            numberOfFrames++;
-            currentBall++;
+    private void checkCurrentGame(int score) throws InvalidPlayException {
+        int lastTwo = currentGame.getScore() + score;
+        if (lastTwo > MAX_SCORE) {
+            throw new InvalidPlayException("Last two throws = " + lastTwo);
         }
+    }
 
-        if (numberOfFrames >= MAX_NUMBER_OF_FRAMES) {
-            return true;
+    private boolean playingBonuses() {
+        return bonuses.size() < numberOfBounusesReceived;
+    }
+
+    private boolean playingNomalFrames() {
+        return frames.size() < MAX_NUMBER_OF_FRAMES;
+    }
+
+    private void checkNumberOfFramesAndBounuses() throws InvalidPlayException {
+        if (frames.size() + bonuses.size() >= (MAX_NUMBER_OF_FRAMES + numberOfBounusesReceived)) {
+            throw new InvalidPlayException("Your match is ended");
         }
-
-        if (currentBall == 0) {
-            return true;
-        }
-
-        return true;
     }
 
-    private boolean sumIsBiggerThanTen(int score, int currentBall) {
-        return (balls.get(currentBall).getScore() + score) > 10;
-    }
 
-    private boolean canPlayNext() {
-        int numberOfFrames = 0;
-        int currentBall = 0;
-
-        for (; currentBall < balls.size() && numberOfFrames < MAX_NUMBER_OF_FRAMES; currentBall++) {
-            if (isAStrike(currentBall)) {
-                numberOfFrames++;
-            } else {
-                if (!isTheLastBall(currentBall)) {
-                    numberOfFrames++;
-                    currentBall++;
-                }
-            }
-        }
-
-        if (numberOfFrames < MAX_NUMBER_OF_FRAMES) {
-            return true;
-        }
-
-        if (isLastFrameAStrike(currentBall)) {
-            return (balls.size() - currentBall + 1) <= 2;
-        }
-
-        if (isLastFrameASpare(currentBall)) {
-            return (balls.size() - currentBall + 1) <= 1;
-        }
-
-        return false;
-    }
-
-    private boolean isTheLastBall(int currentBall) {
-        return currentBall >= balls.size() - 1;
-    }
-
-    private boolean isAStrike(int currentBall) {
-        return balls.get(currentBall).getScore() == MAX_SCORE;
-    }
-
-    private boolean isLastFrameAStrike(int currentBall) {
-        return isAStrike(currentBall - 1);
-    }
-
-    private boolean isLastFrameASpare(int currentBall) {
-        int latsPlay = balls.get(currentBall - 1).getScore();
-        int secondLastplay = balls.get(currentBall - 2).getScore();
-        return (latsPlay + secondLastplay) == MAX_SCORE;
-    }
-
-    public List<Ball> getBalls() {
-        return unmodifiableList(balls);
-    }
 }

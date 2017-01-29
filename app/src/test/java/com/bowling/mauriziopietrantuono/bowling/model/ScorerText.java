@@ -17,7 +17,7 @@ public class ScorerText {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(5);
+        match.throwBall(5);
         Scorer scorer = new Scorer();
         assertEquals(5, scorer.score(match));
     }
@@ -27,7 +27,7 @@ public class ScorerText {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        match.playBall(10);
+        match.throwBall(10);
         Scorer scorer = new Scorer();
         assertEquals(10, scorer.score(match));
     }
@@ -38,10 +38,10 @@ public class ScorerText {
         BowlingMatch match = new BowlingMatch();
 
 
-        match.playBall(10);
+        match.throwBall(10);
         int firstFrameScore = 10 + 5 + 5;
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
         int secondFrameScore = 10;
         Scorer scorer = new Scorer();
         assertEquals(firstFrameScore + secondFrameScore, scorer.score(match));
@@ -52,14 +52,14 @@ public class ScorerText {
         BowlingMatch match = new BowlingMatch();
 
         //first frame
-        match.playBall(10);
+        match.throwBall(10);
         int firstFrameScore = 10 + 10 + 5;
         // second frame
-        match.playBall(10);
+        match.throwBall(10);
         int seconfFrameScore = 10 + 5 + 5;
         // third frame
-        match.playBall(5);
-        match.playBall(5);
+        match.throwBall(5);
+        match.throwBall(5);
         int thirdFrameScore = 10;
         Scorer scorer = new Scorer();
         assertEquals(firstFrameScore + seconfFrameScore + thirdFrameScore, scorer.score(match));
@@ -85,9 +85,9 @@ public class ScorerText {
     public void lastIsStrikeOtherFrames() throws InvalidPlayException {
         BowlingMatch match = new BowlingMatch();
         int score = makeSomeOtherNineFrames(match);
-        match.playBall(10);
-        match.playBall(10);
-        match.playBall(10);
+        match.throwBall(10);
+        match.throwBall(10);
+        match.throwBall(10);
         score = score + 10 + 10 + 10;
         Scorer scorer = new Scorer();
         assertEquals(score, scorer.score(match));
@@ -97,9 +97,9 @@ public class ScorerText {
     public void lastIsASpareOtherFrames() throws InvalidPlayException {
         BowlingMatch match = new BowlingMatch();
         int score = makeSomeOtherNineFrames(match);
-        match.playBall(5);
-        match.playBall(5);
-        match.playBall(8);
+        match.throwBall(5);
+        match.throwBall(5);
+        match.throwBall(8);
         score = score + 10 + 8;
         Scorer scorer = new Scorer();
         assertEquals(score, scorer.score(match));
@@ -109,8 +109,8 @@ public class ScorerText {
     public void lastIsAMissOtherFrames() throws InvalidPlayException {
         BowlingMatch match = new BowlingMatch();
         int score = makeSomeOtherNineFrames(match);
-        match.playBall(1);
-        match.playBall(1);
+        match.throwBall(1);
+        match.throwBall(1);
         score = score + 2;
         Scorer scorer = new Scorer();
         assertEquals(score, scorer.score(match));
@@ -121,9 +121,9 @@ public class ScorerText {
     public void lastIsStrike() throws InvalidPlayException {
         BowlingMatch match = new BowlingMatch();
         int score = makeSomeNineFrames(match);
-        match.playBall(10);
-        match.playBall(10);
-        match.playBall(10);
+        match.throwBall(10);
+        match.throwBall(10);
+        match.throwBall(10);
         score = score + 10 + 10 + 10;
         Scorer scorer = new Scorer();
         assertEquals(score, scorer.score(match));
@@ -133,9 +133,9 @@ public class ScorerText {
     public void lastIsASpare() throws InvalidPlayException {
         BowlingMatch match = new BowlingMatch();
         int score = makeSomeNineFrames(match);
-        match.playBall(5);
-        match.playBall(5);
-        match.playBall(8);
+        match.throwBall(5);
+        match.throwBall(5);
+        match.throwBall(8);
         score = score + 10 + 8;
         Scorer scorer = new Scorer();
         assertEquals(score, scorer.score(match));
@@ -145,8 +145,8 @@ public class ScorerText {
     public void lastIsAMiss() throws InvalidPlayException {
         BowlingMatch match = new BowlingMatch();
         int score = makeSomeNineFrames(match);
-        match.playBall(1);
-        match.playBall(1);
+        match.throwBall(1);
+        match.throwBall(1);
         score = score + 2;
         Scorer scorer = new Scorer();
         assertEquals(score, scorer.score(match));

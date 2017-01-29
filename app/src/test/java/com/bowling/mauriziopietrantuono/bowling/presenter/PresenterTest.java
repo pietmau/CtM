@@ -48,7 +48,7 @@ public class PresenterTest {
 
     @Test
     public void when_invalidPlay_then_userAlerted() throws InvalidPlayException {
-        doThrow(new InvalidPlayException(MESSAGE)).when(bowlingMatch).playBall(anyInt());
+        doThrow(new InvalidPlayException(MESSAGE)).when(bowlingMatch).throwBall(anyInt());
 
         when(view.getPlay()).thenReturn("2");
         // WHEN
@@ -60,7 +60,7 @@ public class PresenterTest {
 
     @Test
     public void when_validPlay_then_scoreIsUpdated() throws InvalidPlayException {
-        //when(bowlingMatch.playBall(anyInt())).thenReturn(true);
+        //when(bowlingMatch.throwBall(anyInt())).thenReturn(true);
         when(scorer.score(any(BowlingMatch.class))).thenReturn(100);
         when(view.getPlay()).thenReturn("2");
         // WHEN
@@ -72,7 +72,7 @@ public class PresenterTest {
 
     @Test
     public void when_validPlay_then_edittextIsUpdated() throws InvalidPlayException {
-        //when(bowlingMatch.playBall(anyInt())).thenReturn(true);
+        //when(bowlingMatch.throwBall(anyInt())).thenReturn(true);
         when(scorer.score(any(BowlingMatch.class))).thenReturn(100);
         when(view.getPlay()).thenReturn("2");
         // WHEN
@@ -84,7 +84,7 @@ public class PresenterTest {
 
     @Test
     public void when_validPlay_then_representationIsUpdated() throws InvalidPlayException {
-        //when(bowlingMatch.playBall(anyInt())).thenReturn(true);
+        //when(bowlingMatch.throwBall(anyInt())).thenReturn(true);
         when(scorer.score(any(BowlingMatch.class))).thenReturn(100);
         when(representer.represent(any(BowlingMatch.class))).thenReturn(MESSAGE);
         when(view.getPlay()).thenReturn("2");

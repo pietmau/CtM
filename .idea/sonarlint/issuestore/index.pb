@@ -1,6 +1,4 @@
 
-|
-Lapp/src/main/java/com/bowling/mauriziopietrantuono/bowling/MainActivity.java,5/e/5ee8c314cc4d6460bf68c7499368ce9442143340
 >
 app/.gitignore,5/1/51e1c5d383dfaa35e0e7e5873a0a99355a86880f
 <
@@ -15,5 +13,5 @@ Zapp/src/main/java/com/bowling/mauriziopietrantuono/bowling/model/InvalidPlayExc
 Uapp/src/test/java/com/bowling/mauriziopietrantuono/bowling/model/RandomMatchTest.java,a/a/aa3074371483306912246b198c2c89728f863f89
 
 Oapp/src/test/java/com/bowling/mauriziopietrantuono/bowling/model/MatchTest.java,a/9/a90f2037eb587babc6b8fc37a37d8335b1c48a66
-{
-Kapp/src/main/java/com/bowling/mauriziopietrantuono/bowling/model/Match.java,c/d/cdf3a6d0f48c45cd83a33fde2d9ebf1388d50409
+|
+Lapp/src/main/java/com/bowling/mauriziopietrantuono/bowling/model/Scorer.java,7/0/7085a3c9334d85ffd9c13dbe8acbc9881f0f5e91

@@ -11,7 +11,7 @@ public class RepresenterTest {
         // GIVEN
         BowlingMatch bowlingMatch = new BowlingMatch();
         for (int i = 0; i < 12; i++) {
-            bowlingMatch.playBall(10);
+            bowlingMatch.throwBall(10);
         }
         //* WHEN
         String actual = new Representer().represent(bowlingMatch);
@@ -24,9 +24,9 @@ public class RepresenterTest {
         // GIVEN
         BowlingMatch bowlingMatch = new BowlingMatch();
         for (int i = 0; i < 20; i++) {
-            bowlingMatch.playBall(5);
+            bowlingMatch.throwBall(5);
         }
-        bowlingMatch.playBall(5);
+        bowlingMatch.throwBall(5);
         //* WHEN
         String actual = new Representer().represent(bowlingMatch);
         String expected = "5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5";
@@ -39,10 +39,10 @@ public class RepresenterTest {
         BowlingMatch bowlingMatch = new BowlingMatch();
         for (int i = 0; i < 20; i++) {
             if(i%2==0){
-                bowlingMatch.playBall(9);
+                bowlingMatch.throwBall(9);
             }
             else{
-                bowlingMatch.playBall(0);
+                bowlingMatch.throwBall(0);
             }
         }
         //* WHEN
@@ -63,33 +63,33 @@ public class RepresenterTest {
     }
 
     private void playTheMatch(BowlingMatch bowlingMatch) throws InvalidPlayException {
-        bowlingMatch.playBall(10);
+        bowlingMatch.throwBall(10);
 
-        bowlingMatch.playBall(7);
-        bowlingMatch.playBall(3);
+        bowlingMatch.throwBall(7);
+        bowlingMatch.throwBall(3);
 
-        bowlingMatch.playBall(9);
-        bowlingMatch.playBall(0);
+        bowlingMatch.throwBall(9);
+        bowlingMatch.throwBall(0);
 
-        bowlingMatch.playBall(10);
+        bowlingMatch.throwBall(10);
 
-        bowlingMatch.playBall(0);
-        bowlingMatch.playBall(8);
+        bowlingMatch.throwBall(0);
+        bowlingMatch.throwBall(8);
 
-        bowlingMatch.playBall(8);
-        bowlingMatch.playBall(2);
+        bowlingMatch.throwBall(8);
+        bowlingMatch.throwBall(2);
 
-        bowlingMatch.playBall(0);
-        bowlingMatch.playBall(6);
+        bowlingMatch.throwBall(0);
+        bowlingMatch.throwBall(6);
 
-        bowlingMatch.playBall(10);
+        bowlingMatch.throwBall(10);
 
-        bowlingMatch.playBall(10);
+        bowlingMatch.throwBall(10);
 
-        bowlingMatch.playBall(10);
+        bowlingMatch.throwBall(10);
 
-        bowlingMatch.playBall(8);
-        bowlingMatch.playBall(1);
+        bowlingMatch.throwBall(8);
+        bowlingMatch.throwBall(1);
 
     }
 }
