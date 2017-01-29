@@ -12,7 +12,7 @@ public class BowlingMatch {
 
     public boolean playBall(int score) throws InvalidPlayException {
         if (score < 0 || score > 10) {
-            throw new IllegalArgumentException("Invalid play");
+            throw new InvalidPlayException("Invalid play");
         }
         checkBalls();
         balls.add(new Ball(score));

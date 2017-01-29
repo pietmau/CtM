@@ -18,7 +18,7 @@ public class MatchTest {
         match.playBall(5);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = InvalidPlayException.class)
     public void when_ballIsNegatve_Exception() throws InvalidPlayException {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
@@ -26,7 +26,7 @@ public class MatchTest {
         match.playBall(-1);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = InvalidPlayException.class)
     public void when_ballIsBiggerThanTen_Exception() throws InvalidPlayException {
         // GIVEN
         BowlingMatch match = new BowlingMatch();

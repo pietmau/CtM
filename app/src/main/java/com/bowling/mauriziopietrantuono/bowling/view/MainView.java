@@ -6,4 +6,6 @@ public interface MainView {
     void setTextEditError(String message);
 
     void setError(String message);
+
+    void setScore(int score);
 }

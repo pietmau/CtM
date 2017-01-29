@@ -7,13 +7,10 @@ import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_NUMBE
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_SCORE;
 
 public class Scorer {
-    private final List<Ball> balls;
+    private List<Ball> balls;
 
-    public Scorer(BowlingMatch match) {
-        this.balls = match.getBalls();
-    }
-
-    public int score() {
+    public int score(BowlingMatch match) {
+        balls = match.getBalls();
         int score = 0;
         for (int i = 0, frames = 0; i < balls.size() && frames < MAX_NUMBER_OF_FRAMES; i++, frames++) {
 

@@ -20,8 +20,8 @@ public class ScorerText {
         BowlingMatch match = new BowlingMatch();
         // THEN
         match.playBall(5);
-        Scorer scorer = new Scorer(match);
-        assertEquals(5, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(5, scorer.score(match));
     }
 
     @Test
@@ -30,8 +30,8 @@ public class ScorerText {
         BowlingMatch match = new BowlingMatch();
         // THEN
         match.playBall(10);
-        Scorer scorer = new Scorer(match);
-        assertEquals(10, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(10, scorer.score(match));
     }
 
     @Test
@@ -45,8 +45,8 @@ public class ScorerText {
         match.playBall(5);
         match.playBall(5);
         int secondFrameScore = 10;
-        Scorer scorer = new Scorer(match);
-        assertEquals(firstFrameScore + secondFrameScore, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(firstFrameScore + secondFrameScore, scorer.score(match));
     }
 
     @Test
@@ -63,24 +63,24 @@ public class ScorerText {
         match.playBall(5);
         match.playBall(5);
         int thirdFrameScore = 10;
-        Scorer scorer = new Scorer(match);
-        assertEquals(firstFrameScore + seconfFrameScore + thirdFrameScore, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(firstFrameScore + seconfFrameScore + thirdFrameScore, scorer.score(match));
     }
 
     @Test
     public void someMatchIsScoredCorrectly() throws InvalidPlayException {
         BowlingMatch match = new BowlingMatch();
         int score = makeSomeNineFrames(match);
-        Scorer scorer = new Scorer(match);
-        assertEquals(score, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(score, scorer.score(match));
     }
 
     @Test
     public void someOtherMatchIsScoredCorrectly() throws InvalidPlayException {
         BowlingMatch match = new BowlingMatch();
         int score = makeSomeOtherNineFrames(match);
-        Scorer scorer = new Scorer(match);
-        assertEquals(score, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(score, scorer.score(match));
     }
 
     @Test
@@ -91,8 +91,8 @@ public class ScorerText {
         match.playBall(10);
         match.playBall(10);
         score = score + 10 + 10 + 10;
-        Scorer scorer = new Scorer(match);
-        assertEquals(score, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(score, scorer.score(match));
     }
 
     @Test
@@ -103,8 +103,8 @@ public class ScorerText {
         match.playBall(5);
         match.playBall(8);
         score = score + 10 + 8;
-        Scorer scorer = new Scorer(match);
-        assertEquals(score, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(score, scorer.score(match));
     }
 
     @Test
@@ -114,8 +114,8 @@ public class ScorerText {
         match.playBall(1);
         match.playBall(1);
         score = score + 2;
-        Scorer scorer = new Scorer(match);
-        assertEquals(score, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(score, scorer.score(match));
     }
 
 
@@ -127,8 +127,8 @@ public class ScorerText {
         match.playBall(10);
         match.playBall(10);
         score = score + 10 + 10 + 10;
-        Scorer scorer = new Scorer(match);
-        assertEquals(score, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(score, scorer.score(match));
     }
 
     @Test
@@ -139,8 +139,8 @@ public class ScorerText {
         match.playBall(5);
         match.playBall(8);
         score = score + 10 + 8;
-        Scorer scorer = new Scorer(match);
-        assertEquals(score, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(score, scorer.score(match));
     }
 
     @Test
@@ -150,7 +150,7 @@ public class ScorerText {
         match.playBall(1);
         match.playBall(1);
         score = score + 2;
-        Scorer scorer = new Scorer(match);
-        assertEquals(score, scorer.score());
+        Scorer scorer = new Scorer();
+        assertEquals(score, scorer.score(match));
     }
 }
