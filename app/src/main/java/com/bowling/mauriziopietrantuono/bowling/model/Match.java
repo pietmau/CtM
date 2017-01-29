@@ -1,6 +1,7 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
 import com.bowling.mauriziopietrantuono.bowling.model.frame.Frame;
+import com.bowling.mauriziopietrantuono.bowling.model.frame.SpareFrame;
 import com.bowling.mauriziopietrantuono.bowling.model.frame.StrikeFrame;
 
 import java.util.ArrayList;
@@ -16,7 +17,12 @@ public final class Match {
         if (score == 10) {
             addStrike();
         }
+        addSpareOrMiss(score);
         return true;
+    }
+
+    private void addSpareOrMiss(int score) {
+        frames.add(new SpareFrame(score, 0));
     }
 
 
