@@ -27,7 +27,11 @@ public class Representer {
                 appendSpare(stringBuilder, i);
                 i++;
             } else {
-                stringBuilder.append(balls.get(i).getScore());
+                if (balls.get(i).getScore() != 0) {
+                    stringBuilder.append(balls.get(i).getScore());
+                } else{
+                    stringBuilder.append(ZERO);
+                }
                 i++;
                 if (!isLastBall(i)) {
                     if (balls.get(i).getScore() != 0) {
