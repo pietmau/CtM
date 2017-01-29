@@ -12,12 +12,12 @@ import static com.bowling.mauriziopietrantuono.bowling.model.Constants.STRIKE;
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.ZERO;
 
 public class Representer {
-    private List<Ball> balls = new ArrayList<>();
+    private final List<Ball> balls = new ArrayList<>();
 
     public String represent(BowlingMatch match) {
         StringBuilder stringBuilder = new StringBuilder();
         getBalls(match);
-        if (balls == null || balls.isEmpty()) {
+        if (balls.isEmpty()) {
             return null;
         }
         int currentBall = 0;
@@ -84,7 +84,7 @@ public class Representer {
     }
 
     private boolean isLastBall(int i) {
-        return (i >= balls.size());
+        return i >= balls.size();
     }
 
 

@@ -8,7 +8,7 @@ import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_NUMBE
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_SCORE;
 
 public class Scorer {
-    private List<Ball> balls = new ArrayList<>();
+    private final List<Ball> balls = new ArrayList<>();
 
     public int score(BowlingMatch match) {
         getBalls(match);

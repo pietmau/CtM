@@ -28,6 +28,5 @@ public class Game {
             secondBall = ball;
             return;
         }
-        new RuntimeException();
     }
 }
