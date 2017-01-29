@@ -15,7 +15,10 @@ public class Match {
     }
 
     public boolean playBall(int score) {
-        return true;
+        if (score < 0 || score > 10){
+            throw new IllegalArgumentException("Invalid play");
+        }
+            return true;
     }
 
     private void appendFrame(Frame frame) {

@@ -27,4 +27,12 @@ public class MatchTest {
         // THEN
         match.playBall(5);
     }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void when_ball_is_negatveException() {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        match.playBall(-1);
+    }
 }
