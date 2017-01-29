@@ -1,9 +1,10 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
 import com.bowling.mauriziopietrantuono.bowling.model.frame.Frame;
+import com.bowling.mauriziopietrantuono.bowling.model.frame.StrikeFrame;
 
-public class Match {
-    private Frame head = null;
+public final class Match {
+    Frame head = null;
 
     private void addFrame(Frame frame) {
         if (head == null) {
@@ -15,10 +16,21 @@ public class Match {
     }
 
     public boolean playBall(int score) {
-        if (score < 0 || score > 10){
+        if (score < 0 || score > 10) {
             throw new IllegalArgumentException("Invalid play");
         }
-            return true;
+        if (score == 10) {
+            addStrike();
+        }
+        return true;
+    }
+
+    private void addStrike() {
+        if (head == null) {
+            head = new StrikeFrame();
+        } else {
+            head.nextFrame = new StrikeFrame();
+        }
     }
 
     private void appendFrame(Frame frame) {

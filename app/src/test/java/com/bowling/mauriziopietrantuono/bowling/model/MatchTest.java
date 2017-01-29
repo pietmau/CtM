@@ -29,10 +29,27 @@ public class MatchTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void when_ball_is_negatveException() {
+    public void when_ballIsNegatve_Exception() {
         // GIVEN
         Match match = new Match();
         // THEN
         match.playBall(-1);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void when_ballIsBiggerThanTen_Exception() {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        match.playBall(11);
+    }
+
+    @Test
+    public void when_scoreInTenStrikeIsAdded() {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        match.playBall(10);
+        assertTrue((match.head instanceof StrikeFrame));
     }
 }
