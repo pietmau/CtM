@@ -79,7 +79,7 @@ public class PresenterTest {
 
         presenter.onGoClicked();
         // THEN
-        verify(view).setPlayScore(null);
+        verify(view).setInputTextText(null);
     }
 
     @Test
@@ -93,5 +93,29 @@ public class PresenterTest {
         presenter.onGoClicked();
         // THEN
         verify(view).setRepresentation(MESSAGE);
+    }
+
+    @Test
+    public void when_reset_then_inputIsReset() {
+        // WHEN
+        presenter.onResetClicked();
+        // THEN
+        verify(view).setInputTextText(null);
+    }
+
+    @Test
+    public void when_reset_then_scoreIsSetToZero() {
+        // WHEN
+        presenter.onResetClicked();
+        // THEN
+        verify(view).setScore(0);
+    }
+
+    @Test
+    public void when_reset_then_representationIsReset() {
+        // WHEN
+        presenter.onResetClicked();
+        // THEN
+        verify(view).setRepresentation(null);
     }
 }

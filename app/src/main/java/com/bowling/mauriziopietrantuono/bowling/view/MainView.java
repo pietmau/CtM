@@ -11,5 +11,5 @@ public interface MainView {
 
     void setRepresentation(String representation);
 
-    void setPlayScore(String s);
+    void setInputTextText(String s);
 }

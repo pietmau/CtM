@@ -62,7 +62,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
-    public void setPlayScore(String s) {
+    public void setInputTextText(String s) {
         editText.setText(s);
+    }
+
+    @OnClick(R.id.reset)
+    public void onResetClicked(){
+        presenter.onResetClicked();
     }
 }

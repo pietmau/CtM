@@ -9,7 +9,7 @@ import com.bowling.mauriziopietrantuono.bowling.view.MainView;
 
 public class Presenter {
     private MainView view;
-    private final BowlingMatch bowlingMatch;
+    private BowlingMatch bowlingMatch;
     private final Scorer scorer;
     private final Representer representer;
 
@@ -43,8 +43,13 @@ public class Presenter {
     }
 
     private void updateView() {
-        view.setPlayScore(null);
+        view.setInputTextText(null);
         view.setScore(scorer.score(bowlingMatch));
         view.setRepresentation(representer.represent(bowlingMatch));
+    }
+
+    public void onResetClicked() {
+        bowlingMatch = new BowlingMatch();
+        updateView();
     }
 }
