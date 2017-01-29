@@ -2,9 +2,6 @@ package com.bowling.mauriziopietrantuono.bowling.model;
 
 import com.bowling.mauriziopietrantuono.bowling.model.frame.Frame;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Match {
     private Frame head = null;
 
@@ -13,7 +10,7 @@ public class Match {
             head = frame;
             return;
         }
-        checkNumberOfFrames();
+        checkMaxNumberOfFrames();
         appendFrame(frame);
     }
 
@@ -25,7 +22,7 @@ public class Match {
         temp.nextFrame = frame;
     }
 
-    private void checkNumberOfFrames() {
+    private void checkMaxNumberOfFrames() {
         Frame temp = head;
         int count = 0;
         while (temp != null) {
@@ -37,4 +34,20 @@ public class Match {
         }
     }
 
+    private void checkMinNumberOfFrames() {
+        Frame temp = head;
+        int count = 0;
+        while (temp != null) {
+            count++;
+            temp = temp.nextFrame;
+        }
+        if (count < 10) {
+            throw new IllegalArgumentException("Invalid match " + count + " frames!");
+        }
+    }
+
+    public int calculate() {
+        checkMinNumberOfFrames();
+        return 0;
+    }
 }
