@@ -56,5 +56,24 @@ public class MatchTest {
         fail();
     }
 
+    @Test
+    public void when_IplayOnce_then_IcanContinuePlaying() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        assertTrue(match.playBall(10));
+    }
+
+    @Test
+    public void when_playAllStrikes_then_IgetTwoBonuses() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        for (int i = 0; i < 10; i++) {
+            match.playBall(10);
+        }
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+    }
 
 }
