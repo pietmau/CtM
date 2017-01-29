@@ -16,8 +16,8 @@ public class Scorer {
     public int score() {
         int score = 0;
         int frames = 0;
-
-        for (int i = 0; i < balls.size() && frames < MAX_NUMBER_OF_FRAMES; i++, frames++) {
+        int i = 0;
+        for (; i < balls.size() && frames < MAX_NUMBER_OF_FRAMES; i++, frames++) {
 
             if (isaStrike(i)) {
                 score += MAX_SCORE;
@@ -39,7 +39,7 @@ public class Scorer {
                 }
             }
         }
-        if(frames<MAX_NUMBER_OF_FRAMES){
+        if (frames < MAX_NUMBER_OF_FRAMES) {
             return score;
         }
 

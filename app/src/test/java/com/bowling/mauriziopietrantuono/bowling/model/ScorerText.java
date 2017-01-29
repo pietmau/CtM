@@ -84,7 +84,7 @@ public class ScorerText {
     }
 
     @Test
-    public void lastIsStrike() throws InvalidPlayException {
+    public void lastIsStrikeOtherFrames() throws InvalidPlayException {
         Match match = new Match();
         int score = makeSomeOtherNineFrames(match);
         match.playBall(10);
@@ -95,5 +95,62 @@ public class ScorerText {
         assertEquals(score, scorer.score());
     }
 
+    @Test
+    public void lastIsASpareOtherFrames() throws InvalidPlayException {
+        Match match = new Match();
+        int score = makeSomeOtherNineFrames(match);
+        match.playBall(5);
+        match.playBall(5);
+        match.playBall(8);
+        score = score + 10 + 8;
+        Scorer scorer = new Scorer(match);
+        assertEquals(score, scorer.score());
+    }
 
+    @Test
+    public void lastIsAMissOtherFrames() throws InvalidPlayException {
+        Match match = new Match();
+        int score = makeSomeOtherNineFrames(match);
+        match.playBall(1);
+        match.playBall(1);
+        score = score + 2;
+        Scorer scorer = new Scorer(match);
+        assertEquals(score, scorer.score());
+    }
+
+
+    @Test
+    public void lastIsStrike() throws InvalidPlayException {
+        Match match = new Match();
+        int score = makeSomeNineFrames(match);
+        match.playBall(10);
+        match.playBall(10);
+        match.playBall(10);
+        score = score + 10 + 10 + 10;
+        Scorer scorer = new Scorer(match);
+        assertEquals(score, scorer.score());
+    }
+
+    @Test
+    public void lastIsASpare() throws InvalidPlayException {
+        Match match = new Match();
+        int score = makeSomeNineFrames(match);
+        match.playBall(5);
+        match.playBall(5);
+        match.playBall(8);
+        score = score + 10 + 8;
+        Scorer scorer = new Scorer(match);
+        assertEquals(score, scorer.score());
+    }
+
+    @Test
+    public void lastIsAMiss() throws InvalidPlayException {
+        Match match = new Match();
+        int score = makeSomeNineFrames(match);
+        match.playBall(1);
+        match.playBall(1);
+        score = score + 2;
+        Scorer scorer = new Scorer(match);
+        assertEquals(score, scorer.score());
+    }
 }
