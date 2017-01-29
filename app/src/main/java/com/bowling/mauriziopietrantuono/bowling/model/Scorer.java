@@ -48,6 +48,9 @@ public class Scorer {
         for (Bonus bonus : match.getBonuses()) {
             balls.add(bonus.ball);
         }
+        if (match.getCurrentGame().firstBall != null) {
+            balls.add(match.getCurrentGame().firstBall);
+        }
     }
 
     private boolean isLastBall(int i) {

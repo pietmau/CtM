@@ -1,6 +1,7 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_NUMBER_OF_FRAMES;
@@ -11,23 +12,22 @@ import static com.bowling.mauriziopietrantuono.bowling.model.Constants.STRIKE;
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.ZERO;
 
 public class Representer {
-    private List<Ball> balls;
+    private List<Ball> balls = new ArrayList<>();
 
     public String represent(BowlingMatch match) {
-//        StringBuilder stringBuilder = new StringBuilder();
-//        balls = match.getBalls();
-//        if (balls == null || balls.isEmpty()) {
-//            return null;
-//        }
-//        int currentBall = 0;
-//
-//        currentBall = appendRegularFrames(stringBuilder, currentBall);
-//
-//        stringBuilder.append(SEPARATOR);
-//
-//        appendBonusFrames(stringBuilder, currentBall);
-//        return stringBuilder.toString();
-        return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        getBalls(match);
+        if (balls == null || balls.isEmpty()) {
+            return null;
+        }
+        int currentBall = 0;
+
+        currentBall = appendRegularFrames(stringBuilder, currentBall);
+
+        stringBuilder.append(SEPARATOR);
+
+        appendBonusFrames(stringBuilder, currentBall);
+        return stringBuilder.toString();
     }
 
 
@@ -100,5 +100,20 @@ public class Representer {
         return ball.getScore() == MAX_SCORE;
     }
 
+    private void getBalls(BowlingMatch match) {
+        balls.clear();
+        for (Frame frame : match.getFrames()) {
+            balls.add(frame.first);
+            if (frame.second != null) {
+                balls.add(frame.second);
+            }
+        }
+        for (Bonus bonus : match.getBonuses()) {
+            balls.add(bonus.ball);
+        }
+        if (match.getCurrentGame().firstBall != null) {
+            balls.add(match.getCurrentGame().firstBall);
+        }
+    }
 
 }
