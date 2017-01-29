@@ -51,7 +51,7 @@ public class MatchTest {
         Match match = new Match();
         // THEN
         match.playBall(10);
-        assertTrue((match.head instanceof StrikeFrame));
+        assertTrue((match.frames.get(0) instanceof StrikeFrame));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class MatchTest {
         // THEN
         match.playBall(5);
         match.playBall(5);
-        assertTrue((match.head instanceof SpareFrame));
+        assertTrue((match.frames.get(0) instanceof SpareFrame));
     }
 
 
