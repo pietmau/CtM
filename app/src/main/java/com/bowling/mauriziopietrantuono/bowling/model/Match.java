@@ -1,12 +1,15 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.unmodifiableList;
 
 public final class Match {
     private static final int MAX_NUMBER_OF_FRAMES = 10;
     private static final int MAX_SCORE = 10;
-    List<Ball> balls = new ArrayList<>();
+    private List<Ball> balls = new ArrayList<>();
 
     public boolean playBall(int score) throws InvalidPlayException {
         if (score < 0 || score > 10) {
@@ -71,5 +74,7 @@ public final class Match {
         return (latsPlay + secondLastplay) == MAX_SCORE;
     }
 
-
+    public List<Ball> getBalls() {
+        return unmodifiableList(balls);
+    }
 }
