@@ -14,14 +14,46 @@ public class BowlingMatch {
         if (score < 0 || score > 10) {
             throw new InvalidPlayException("Invalid play");
         }
-        checkBalls();
+        checkBalls(score);
         balls.add(new Ball(score));
     }
 
-    private void checkBalls() throws InvalidPlayException {
+    private void checkBalls(int score) throws InvalidPlayException {
         if (!canPlayNext()) {
             throw new InvalidPlayException(balls.size());
         }
+        if (!isValidSequence(score)) {
+            throw new InvalidPlayException("Invalid play");
+        }
+    }
+
+    private boolean isValidSequence(int score) {
+        int numberOfFrames = 0;
+        int currentBall = 0;
+
+        for (; currentBall < balls.size() && numberOfFrames < MAX_NUMBER_OF_FRAMES; currentBall++) {
+            if (isAStrike(currentBall)) {
+                numberOfFrames++;
+            } else {
+                if (!isTheLastBall(currentBall)) {
+                    numberOfFrames++;
+                    currentBall++;
+                } else {
+                    if ((balls.get(currentBall).getScore() + score) > 10) {
+                        return false;
+                    }
+                }
+            }
+        }
+        if (numberOfFrames >= MAX_NUMBER_OF_FRAMES) {
+            return true;
+        }
+
+        if (currentBall == 0) {
+            return true;
+        }
+
+        return true;
     }
 
     private boolean canPlayNext() {
@@ -38,6 +70,7 @@ public class BowlingMatch {
                 }
             }
         }
+
         if (numberOfFrames < MAX_NUMBER_OF_FRAMES) {
             return true;
         }

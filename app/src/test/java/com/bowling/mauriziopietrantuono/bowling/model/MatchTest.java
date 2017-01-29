@@ -34,6 +34,7 @@ public class MatchTest {
         match.playBall(11);
     }
 
+
     @Test
     public void when_IplayOnce_then_IcanContinuePlaying() throws InvalidPlayException {
         // GIVEN
