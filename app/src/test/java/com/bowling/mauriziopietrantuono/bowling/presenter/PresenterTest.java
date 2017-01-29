@@ -1,5 +1,7 @@
 package com.bowling.mauriziopietrantuono.bowling.presenter;
 
+import com.bowling.mauriziopietrantuono.bowling.model.BowlingMatch;
+import com.bowling.mauriziopietrantuono.bowling.model.InvalidPlayException;
 import com.bowling.mauriziopietrantuono.bowling.view.MainView;
 
 import org.junit.Before;
@@ -8,29 +10,45 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PresenterTest {
+    private static final String GARBAGE = "garbage";
+    private static final String MESSAGE = "message";
     private Presenter presenter;
     @Mock MainView view;
+    @Mock BowlingMatch bowlingMatch;
 
     @Before
     public void setUp() throws Exception {
-        presenter = new Presenter();
+        presenter = new Presenter(bowlingMatch);
         presenter.bind(view);
     }
 
     @Test
-    public void given_foo_when_bar_then_fobar() {
-
+    public void when_wrongInput_then_userAlerted() {
         // GIVEN
+        when(view.getPlay()).thenReturn(GARBAGE);
+        // WHEN
+        presenter.onGoClicked();
+        // THEN
+        verify(view).setTextEditError(null);
+        verify(view).setTextEditError(anyString());
+    }
 
-
+    @Test
+    public void when_invalidPlay_then_userAlerted() throws InvalidPlayException {
+        when(bowlingMatch.playBall(anyInt())).thenThrow(new InvalidPlayException(MESSAGE));
+        when(view.getPlay()).thenReturn("2");
         // WHEN
 
-
+        presenter.onGoClicked();
         // THEN
-
+        verify(view).setError(MESSAGE);
     }
 }

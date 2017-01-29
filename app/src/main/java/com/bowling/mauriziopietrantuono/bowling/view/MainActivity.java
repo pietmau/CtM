@@ -1,12 +1,11 @@
 package com.bowling.mauriziopietrantuono.bowling.view;
 
-import android.support.v4.widget.EdgeEffectCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import com.bowling.mauriziopietrantuono.bowling.R;
+import com.bowling.mauriziopietrantuono.bowling.model.BowlingMatch;
 import com.bowling.mauriziopietrantuono.bowling.presenter.Presenter;
 
 import butterknife.BindView;
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        presenter= new Presenter();
+        presenter= new Presenter(new BowlingMatch());
         presenter.bind(this);
     }
 
@@ -33,6 +32,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public String getPlay(){
-        return editText.getText().toString();
+        return editText.getText().toString().trim();
+    }
+
+    @Override
+    public void setTextEditError(String message) {
+        editText.setError(message);
+    }
+
+    @Override
+    public void setError(String message) {
+
     }
 }

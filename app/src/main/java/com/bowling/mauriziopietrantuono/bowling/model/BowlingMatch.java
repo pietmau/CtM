@@ -7,7 +7,7 @@ import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_NUMBE
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_SCORE;
 import static java.util.Collections.unmodifiableList;
 
-public final class BowlingMatch {
+public class BowlingMatch {
     private final List<Ball> balls = new ArrayList<>();
 
     public boolean playBall(int score) throws InvalidPlayException {
