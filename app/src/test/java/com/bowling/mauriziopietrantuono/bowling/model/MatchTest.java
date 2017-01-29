@@ -22,46 +22,38 @@ public class MatchTest {
     }
 
     @Test
-    public void given_match_canPlayBall() {
+    public void given_match_canPlayBall() throws InvalidPlayException {
         // GIVEN
         Match match = new Match();
         // THEN
         match.playBall(5);
     }
 
-    @Test (expected = IllegalArgumentException.class)
-    public void when_ballIsNegatve_Exception() {
+    @Test(expected = IllegalArgumentException.class)
+    public void when_ballIsNegatve_Exception() throws InvalidPlayException {
         // GIVEN
         Match match = new Match();
         // THEN
         match.playBall(-1);
     }
 
-    @Test (expected = IllegalArgumentException.class)
-    public void when_ballIsBiggerThanTen_Exception() {
+    @Test(expected = IllegalArgumentException.class)
+    public void when_ballIsBiggerThanTen_Exception() throws InvalidPlayException {
         // GIVEN
         Match match = new Match();
         // THEN
         match.playBall(11);
     }
 
-    @Test
-    public void when_scoreInTenStrikeIsAdded() {
+    @Test(expected = InvalidPlayException.class)
+    public void when_playMoreThanTenMiss_then_Exception() throws InvalidPlayException {
         // GIVEN
         Match match = new Match();
         // THEN
-        match.playBall(10);
-        assertTrue((match.frames.get(0) instanceof StrikeFrame));
-    }
-
-    @Test
-    public void when_scoreIsFiveAndFivewSpareIsIsAdded() {
-        // GIVEN
-        Match match = new Match();
-        // THEN
-        match.playBall(5);
-        match.playBall(5);
-        assertTrue((match.frames.get(0) instanceof SpareFrame));
+        for (int i = 0; i <= 11; i++) {
+            match.playBall(5);
+        }
+        fail();
     }
 
 

@@ -1,33 +1,25 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
-import com.bowling.mauriziopietrantuono.bowling.model.frame.Frame;
-import com.bowling.mauriziopietrantuono.bowling.model.frame.SpareFrame;
-import com.bowling.mauriziopietrantuono.bowling.model.frame.StrikeFrame;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Match {
-    List<Frame> frames = new ArrayList<>();
+    List<Ball> balls = new ArrayList<>();
 
-    public boolean playBall(int score) {
+    public boolean playBall(int score) throws InvalidPlayException {
         if (score < 0 || score > 10) {
             throw new IllegalArgumentException("Invalid play");
         }
-        if (score == 10) {
-            addStrike();
-        }
-        addSpareOrMiss(score);
+        checkBalls();
+        balls.add(new Ball(score));
         return true;
     }
 
-    private void addSpareOrMiss(int score) {
-        frames.add(new SpareFrame(new Ball(score), new Ball(0)));
+    private void checkBalls() throws InvalidPlayException {
+        if (balls.size() > 10) {
+            throw new InvalidPlayException(balls.size());
+        }
     }
 
-
-    private void addStrike() {
-        frames.add(new StrikeFrame());
-    }
 
 }
