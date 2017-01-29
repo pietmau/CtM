@@ -105,4 +105,11 @@ public class BowlingMatch {
     }
 
 
+    public List<Frame> getFrames() {
+        return frames;
+    }
+
+    public List<Bonus> getBonuses() {
+        return bonuses;
+    }
 }
