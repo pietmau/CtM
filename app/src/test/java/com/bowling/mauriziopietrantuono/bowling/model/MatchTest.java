@@ -5,19 +5,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Map;
-
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MatchTest {
-
-    @Test
-    public void given_foo_when_bar_then_fobar() {
-        // GIVEN
-        // WHEN
-        // THEN
-    }
 
     @Test
     public void given_match_canPlayBall() throws InvalidPlayException {
@@ -43,6 +34,14 @@ public class MatchTest {
         match.playBall(11);
     }
 
+    @Test
+    public void when_IplayOnce_then_IcanContinuePlaying() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        assertTrue(match.playBall(10));
+    }
+
     @Test(expected = InvalidPlayException.class)
     public void when_playMoreThanTwentyMiss_then_Exception() throws InvalidPlayException {
         // GIVEN
@@ -54,13 +53,6 @@ public class MatchTest {
         fail();
     }
 
-    @Test
-    public void when_IplayOnce_then_IcanContinuePlaying() throws InvalidPlayException {
-        // GIVEN
-        Match match = new Match();
-        // THEN
-        assertTrue(match.playBall(10));
-    }
 
     @Test
     public void when_playAllStrikes_then_IgetTwoBonuses() throws InvalidPlayException {
@@ -113,4 +105,92 @@ public class MatchTest {
         assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
     }
+
+    @Test(expected = InvalidPlayException.class)
+    public void when_lastNotStrikeOrSpare_then_fails() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        makeNineFrames(match);
+
+        // last Frame
+        match.playBall(0);
+        match.playBall(0);
+
+        match.playBall(0);
+
+    }
+
+    @Test
+    public void when_lastStrike_then_IgetTwo() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        makeNineFrames(match);
+        //last frame
+        match.playBall(10);
+
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+    }
+
+    @Test(expected = InvalidPlayException.class)
+    public void when_lastStrike_then_IgetTwoOnly() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        makeNineFrames(match);
+
+        //last frame
+        match.playBall(10);
+
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+
+        assertTrue(match.playBall(5));
+    }
+
+    @Test
+    public void when_lastSPare_then_IgetOneMore() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        makeNineFrames(match);
+
+        //last frame
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+
+        assertTrue(match.playBall(5));
+    }
+
+
+
+    private void makeNineFrames(Match match) throws InvalidPlayException {
+        match.playBall(10);
+
+        match.playBall(5);
+        match.playBall(5);
+
+        match.playBall(10);
+
+        match.playBall(0);
+        match.playBall(0);
+
+        match.playBall(10);
+
+        match.playBall(5);
+        match.playBall(5);
+
+        match.playBall(0);
+        match.playBall(0);
+
+        match.playBall(10);
+
+        match.playBall(5);
+        match.playBall(5);
+
+    }
+
+
 }
