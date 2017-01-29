@@ -16,7 +16,7 @@ public class RandomMatchTest {
     @Test
     public void when_lastNotStrikeOrSpare_then_fails() throws InvalidPlayException {
         for (int i = 0; i < 100; i++) {
-            Match match = new Match();
+            BowlingMatch match = new BowlingMatch();
             // nine random plays
             makeNineRandomFrames(match);
 
@@ -35,7 +35,7 @@ public class RandomMatchTest {
     @Test
     public void when_lastStrike_then_IgetTwo() throws InvalidPlayException {
         for (int i = 0; i < 100; i++) {
-            Match match = new Match();
+            BowlingMatch match = new BowlingMatch();
             // nine random plays
             makeNineRandomFrames(match);
             //last frame
@@ -50,7 +50,7 @@ public class RandomMatchTest {
     @Test
     public void when_lastStrike_then_IgetTwoOnly() throws InvalidPlayException {
         for (int i = 0; i < 100; i++) {
-            Match match = new Match();
+            BowlingMatch match = new BowlingMatch();
             // nine random plays
             makeNineRandomFrames(match);
 
@@ -73,7 +73,7 @@ public class RandomMatchTest {
     @Test
     public void when_lastSPare_then_IgetOneMore() throws InvalidPlayException {
         for (int i = 0; i < 100; i++) {
-            Match match = new Match();
+            BowlingMatch match = new BowlingMatch();
             // nine random plays
             makeNineRandomFrames(match);
 
@@ -88,7 +88,7 @@ public class RandomMatchTest {
     @Test
     public void give_randomPlay_when_lastSPare_then_IgetOneMore() throws InvalidPlayException {
         for (int i = 0; i < 100; i++) {
-            Match match = new Match();
+            BowlingMatch match = new BowlingMatch();
             // nine random plays
             makeNineRandomFrames(match);
 
@@ -105,7 +105,7 @@ public class RandomMatchTest {
     @Test
     public void when_lastSPare_then_IgetOneMoreOnly() throws InvalidPlayException {
         for (int i = 0; i < 100; i++) {
-            Match match = new Match();
+            BowlingMatch match = new BowlingMatch();
             // nine random plays
             makeNineRandomFrames(match);
 
@@ -127,7 +127,7 @@ public class RandomMatchTest {
     @Test
     public void givern_Random_matchwhen_lastSPare_then_IgetOneMoreOnly() throws InvalidPlayException {
         for (int i = 0; i < 100; i++) {
-            Match match = new Match();
+            BowlingMatch match = new BowlingMatch();
             // nine random plays
             makeNineRandomFrames(match);
 
@@ -147,7 +147,7 @@ public class RandomMatchTest {
     }
 
 
-    private void makeNineRandomFrames(Match match) throws InvalidPlayException {
+    private void makeNineRandomFrames(BowlingMatch match) throws InvalidPlayException {
         Random random = new Random();
         for (int i = 0; i < 9; i++) {
             int rand = random.nextInt(3);

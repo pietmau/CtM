@@ -7,8 +7,8 @@ import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_NUMBE
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_SCORE;
 import static java.util.Collections.unmodifiableList;
 
-public final class Match {
-    private List<Ball> balls = new ArrayList<>();
+public final class BowlingMatch {
+    private final List<Ball> balls = new ArrayList<>();
 
     public boolean playBall(int score) throws InvalidPlayException {
         if (score < 0 || score > 10) {
@@ -56,7 +56,7 @@ public final class Match {
     }
 
     private boolean isTheLastBall(int currentBall) {
-        return !(currentBall < balls.size() - 1);
+        return (currentBall >= balls.size() - 1);
     }
 
     private boolean isAStrike(int currentBall) {

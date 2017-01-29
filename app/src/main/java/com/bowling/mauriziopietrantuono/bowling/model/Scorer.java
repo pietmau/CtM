@@ -9,15 +9,13 @@ import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_SCORE
 public class Scorer {
     private final List<Ball> balls;
 
-    public Scorer(Match match) {
+    public Scorer(BowlingMatch match) {
         this.balls = match.getBalls();
     }
 
     public int score() {
         int score = 0;
-        int frames = 0;
-        int i = 0;
-        for (; i < balls.size() && frames < MAX_NUMBER_OF_FRAMES; i++, frames++) {
+        for (int i = 0, frames = 0; i < balls.size() && frames < MAX_NUMBER_OF_FRAMES; i++, frames++) {
 
             if (isaStrike(i)) {
                 score += MAX_SCORE;
@@ -34,16 +32,16 @@ public class Scorer {
             } else {
                 score += balls.get(i).getScore();
                 i++;
-                if (i < balls.size()) {
+                if (!isLastBall(i)) {
                     score += balls.get(i).getScore();
                 }
             }
         }
-        if (frames < MAX_NUMBER_OF_FRAMES) {
-            return score;
-        }
-
         return score;
+    }
+
+    private boolean isLastBall(int i) {
+        return (i >= balls.size());
     }
 
     private int getNextScore(int i) {
@@ -57,9 +55,7 @@ public class Scorer {
         if (i > balls.size() - 2) {
             return false;
         }
-        boolean b = (balls.get(i).getScore() + balls.get(i + 1).getScore()) == MAX_SCORE;
-
-        return b;
+        return (balls.get(i).getScore() + balls.get(i + 1).getScore()) == MAX_SCORE;
     }
 
     private boolean isaStrike(int index) {

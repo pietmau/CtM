@@ -5,8 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Random;
-
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -15,7 +13,7 @@ public class MatchTest {
     @Test
     public void given_match_canPlayBall() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         match.playBall(5);
     }
@@ -23,7 +21,7 @@ public class MatchTest {
     @Test(expected = IllegalArgumentException.class)
     public void when_ballIsNegatve_Exception() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         match.playBall(-1);
     }
@@ -31,7 +29,7 @@ public class MatchTest {
     @Test(expected = IllegalArgumentException.class)
     public void when_ballIsBiggerThanTen_Exception() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         match.playBall(11);
     }
@@ -39,7 +37,7 @@ public class MatchTest {
     @Test
     public void when_IplayOnce_then_IcanContinuePlaying() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         assertTrue(match.playBall(10));
     }
@@ -47,7 +45,7 @@ public class MatchTest {
     @Test(expected = InvalidPlayException.class)
     public void when_playMoreThanTwentyMiss_then_Exception() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i <= 22; i++) {
             match.playBall(5);
@@ -59,7 +57,7 @@ public class MatchTest {
     @Test
     public void when_playAllStrikes_then_IgetTwoBonuses() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i < 10; i++) {
             match.playBall(10);
@@ -72,7 +70,7 @@ public class MatchTest {
     @Test(expected = InvalidPlayException.class)
     public void when_playAllStrikes_then_IgetTwoBonusesOnly() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i < 10; i++) {
             match.playBall(10);
@@ -88,7 +86,7 @@ public class MatchTest {
     @Test
     public void when_playNineStrikesAndOneMiss_then_IgetOneBonuse() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i < 9; i++) {
             match.playBall(10);
@@ -104,7 +102,7 @@ public class MatchTest {
     @Test(expected = InvalidPlayException.class)
     public void when_playNineStrikesAndOneMiss_then_IgetOnBonusOnly() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         for (int i = 0; i < 9; i++) {
             match.playBall(10);
@@ -123,7 +121,7 @@ public class MatchTest {
     @Test(expected = InvalidPlayException.class)
     public void when_lastNotStrikeOrSpare_then_fails() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         makeNineFrames(match);
 
@@ -138,7 +136,7 @@ public class MatchTest {
     @Test
     public void when_lastStrike_then_IgetTwo() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         makeNineFrames(match);
 
@@ -153,7 +151,7 @@ public class MatchTest {
     @Test(expected = InvalidPlayException.class)
     public void when_lastStrike_then_IgetTwoOnly() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         makeNineFrames(match);
 
@@ -171,7 +169,7 @@ public class MatchTest {
     @Test
     public void when_lastSPare_then_IgetOneMore() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         makeNineFrames(match);
 
@@ -186,7 +184,7 @@ public class MatchTest {
     @Test(expected = InvalidPlayException.class)
     public void when_lastSPare_then_IgetOneMoreOnly() throws InvalidPlayException {
         // GIVEN
-        Match match = new Match();
+        BowlingMatch match = new BowlingMatch();
         // THEN
         makeNineFrames(match);
 
@@ -201,7 +199,7 @@ public class MatchTest {
         assertTrue(match.playBall(5));
     }
 
-    private void makeNineFrames(Match match) throws InvalidPlayException {
+    private void makeNineFrames(BowlingMatch match) throws InvalidPlayException {
         match.playBall(10);
 
         match.playBall(5);

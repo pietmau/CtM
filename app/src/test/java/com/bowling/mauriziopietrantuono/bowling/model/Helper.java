@@ -3,7 +3,7 @@ package com.bowling.mauriziopietrantuono.bowling.model;
 
 public class Helper {
 
-    public static int makeSomeNineFrames(Match match) throws InvalidPlayException {
+    public static int makeSomeNineFrames(BowlingMatch match) throws InvalidPlayException {
         int score = 0;
 
         match.playBall(10);
@@ -40,7 +40,7 @@ public class Helper {
         return score;
     }
 
-    public static int makeSomeOtherNineFrames(Match match) throws InvalidPlayException {
+    public static int makeSomeOtherNineFrames(BowlingMatch match) throws InvalidPlayException {
         int score = 0;
 
         match.playBall(1);
