@@ -27,7 +27,7 @@ public class CalculatorTest {
         // THEN
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void when_add_elvenFrames_exceptionIsTrown() {
         // WHEN
         Match match = new Match();

@@ -14,6 +14,15 @@ public class Match {
             return;
         }
         checkNumberOfFrames();
+        appendFrame(frame);
+    }
+
+    private void appendFrame(Frame frame) {
+        Frame temp = head;
+        while (temp.nextFrame != null) {
+            temp = temp.nextFrame;
+        }
+        temp.nextFrame = frame;
     }
 
     private void checkNumberOfFrames() {
@@ -24,7 +33,7 @@ public class Match {
             temp = temp.nextFrame;
         }
         if (count > 10) {
-            throw new IllegalArgumentException("Invalid match "+count+" frames!");
+            throw new IllegalArgumentException("Invalid match " + count + " frames!");
         }
     }
 
