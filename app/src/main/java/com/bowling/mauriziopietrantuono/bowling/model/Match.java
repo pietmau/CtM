@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Match {
+    private static final int MAX_BALLS_COUNT = 22;
     List<Ball> balls = new ArrayList<>();
 
     public boolean playBall(int score) throws InvalidPlayException {
@@ -26,16 +27,35 @@ public final class Match {
     }
 
     private boolean canPlayNext() {
-        int count = 20;
-        for (int i = 0; i < balls.size() - 2; i++) {
-            Ball ball = balls.get(i);
-            if (ball.getScore() == 10) {
-                count -= 2;
+        int numberOfFrames = 0;
+        int currentBall = 0;
+        for (; currentBall < balls.size() && numberOfFrames < 10; currentBall++) {
+            if (balls.get(currentBall).getScore() == 10) {
+                numberOfFrames++;
+                continue;
             } else {
-                count--;
+                if (currentBall < balls.size() - 1) {
+                    numberOfFrames++;
+                    currentBall++;
+                }
             }
         }
-        return count > 0;
+        if (numberOfFrames < 10) {
+            return true;
+        }
+
+        if (balls.get(currentBall - 1).getScore() == 10) {
+            return (balls.size() - currentBall + 1) <= 2;
+        }
+
+        int latsPlay = balls.get(currentBall - 1).getScore();
+        int secondLastplay = balls.get(currentBall - 2).getScore();
+
+        if ((latsPlay + secondLastplay) == 10) {
+            return (balls.size() - currentBall + 1) <= 1;
+        }
+
+        return false;
     }
 
 

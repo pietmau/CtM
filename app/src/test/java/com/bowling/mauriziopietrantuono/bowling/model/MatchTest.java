@@ -87,4 +87,30 @@ public class MatchTest {
         assertTrue(match.playBall(5));
     }
 
+    @Test
+    public void when_playNineStrikesAndOneMiss_then_IgetOneBonuse() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        for (int i = 0; i < 9; i++) {
+            match.playBall(10);
+        }
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+    }
+
+    @Test(expected = InvalidPlayException.class)
+    public void when_playNineStrikesAndOneMiss_then_IgetOnBonusOnly() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        for (int i = 0; i < 9; i++) {
+            match.playBall(10);
+        }
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+    }
 }
