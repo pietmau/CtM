@@ -6,7 +6,7 @@ import com.bowling.mauriziopietrantuono.bowling.model.Ball;
 public class BonusFrame extends Frame {
 
     public BonusFrame(Ball firstBall, Ball secondBall) {
-        super(null, firstBall, secondBall);
+        super(firstBall, secondBall);
     }
 
     @Override

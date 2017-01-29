@@ -5,7 +5,7 @@ import com.bowling.mauriziopietrantuono.bowling.model.Ball;
 
 public class StrikeFrame extends Frame {
 
-    public StrikeFrame(Frame nextFrame) {
+    public StrikeFrame() {
         super(new Ball(10), null);
     }
 

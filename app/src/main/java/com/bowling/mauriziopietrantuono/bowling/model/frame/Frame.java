@@ -27,7 +27,5 @@ public abstract class Frame {
         return firstBall;
     }
 
-    public Frame getNextFrame() {
-        return nextFrame;
-    }
+
 }

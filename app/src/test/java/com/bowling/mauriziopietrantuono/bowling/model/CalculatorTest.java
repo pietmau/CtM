@@ -22,14 +22,20 @@ public class CalculatorTest {
     public void when_allStrikes_then_containsElevenFrames() {
         // GIVEN
         Match match = new Match();
-        addTenStrikes(match);
+
         // WHEN
         // THEN
     }
 
-    private void addTenStrikes(Match match) {
-        for (int i = 0; i < 10; i++) {
-
+    @Test
+    public void when_add_elvenFrames_exceptionIsTrown() {
+        // WHEN
+        Match match = new Match();
+        for (int i = 0; i <= 11; i++) {
+            match.addFrame(new StrikeFrame());
         }
+        fail();
     }
+
+
 }

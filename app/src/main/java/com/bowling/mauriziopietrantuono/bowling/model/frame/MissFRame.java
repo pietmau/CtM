@@ -6,7 +6,7 @@ import com.bowling.mauriziopietrantuono.bowling.model.Ball;
 public class MissFRame extends Frame {
 
     public MissFRame(Frame nextFrame, Ball firstBall, Ball secondBall) {
-        super(nextFrame, firstBall, secondBall);
+        super(firstBall, secondBall);
     }
 
     @Override
