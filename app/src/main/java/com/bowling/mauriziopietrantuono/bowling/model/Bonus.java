@@ -1,6 +1,6 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
-public class Bonus {
+class Bonus {
 
     final Ball ball;
 

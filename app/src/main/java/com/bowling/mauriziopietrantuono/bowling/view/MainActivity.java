@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements MainView {
-    Presenter presenter;
+    private Presenter presenter;
     @BindView(R.id.play) EditText editText;
     @BindView(R.id.score) TextView scoreView;
     @BindView(R.id.representation) TextView representationView;
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        // We are ready for dependency injection if we want to implement it
         presenter = new Presenter(new BowlingMatch(), new Scorer(), new Representer());
         presenter.bind(this);
     }

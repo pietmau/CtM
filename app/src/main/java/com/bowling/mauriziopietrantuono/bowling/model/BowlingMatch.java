@@ -6,12 +6,16 @@ import java.util.List;
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_NUMBER_OF_FRAMES;
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.MAX_SCORE;
 
+/**
+ * Represents a bowling match, we can play it by throwing ball
+ */
 public class BowlingMatch {
     private final List<Frame> frames = new ArrayList<>();
     private final List<Bonus> bonuses = new ArrayList<>();
-    int numberOfBounusesReceived = 0;
+    private int numberOfBounusesReceived = 0;
     private Game currentGame = new Game();
 
+    /** We can play balls by throwing them */
     public void throwBall(int score) throws InvalidPlayException {
         if (score < 0 || score > 10) {
             throw new InvalidPlayException("Invalid throw " + score);
@@ -19,7 +23,7 @@ public class BowlingMatch {
 
         checkNumberOfFramesAndBounuses();
 
-        if (!playingBonuses()) {
+        if (!isPlayingBonuses()) {
             playNormalFrame(score);
         } else {
             playBonuses(score);
@@ -78,7 +82,7 @@ public class BowlingMatch {
     }
 
     /** Returns true if we are playing bonuses */
-    private boolean playingBonuses() {
+    private boolean isPlayingBonuses() {
         return bonuses.size() < numberOfBounusesReceived;
     }
 

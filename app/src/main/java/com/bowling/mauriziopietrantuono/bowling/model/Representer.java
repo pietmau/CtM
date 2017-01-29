@@ -11,6 +11,9 @@ import static com.bowling.mauriziopietrantuono.bowling.model.Constants.SPARE;
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.STRIKE;
 import static com.bowling.mauriziopietrantuono.bowling.model.Constants.ZERO;
 
+/**
+ * Represents a match as a string
+ */
 public class Representer {
     private final List<Ball> balls = new ArrayList<>();
 
@@ -18,7 +21,7 @@ public class Representer {
         StringBuilder stringBuilder = new StringBuilder();
         getBalls(match);
         if (balls.isEmpty()) {
-            return null;
+            return stringBuilder.toString();
         }
         int currentBall = 0;
 

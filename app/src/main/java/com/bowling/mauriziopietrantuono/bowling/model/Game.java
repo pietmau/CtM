@@ -26,7 +26,6 @@ public class Game {
         }
         if (secondBall == null) {
             secondBall = ball;
-            return;
         }
     }
 }
