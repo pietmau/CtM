@@ -1,5 +1,6 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
+import com.bowling.mauriziopietrantuono.bowling.model.frame.SpareFrame;
 import com.bowling.mauriziopietrantuono.bowling.model.frame.StrikeFrame;
 
 import org.junit.Test;
@@ -52,4 +53,16 @@ public class MatchTest {
         match.playBall(10);
         assertTrue((match.head instanceof StrikeFrame));
     }
+
+    @Test
+    public void when_scoreIsFiveAndFivewSpareIsIsAdded() {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        match.playBall(5);
+        match.playBall(5);
+        assertTrue((match.head instanceof SpareFrame));
+    }
+
+
 }
