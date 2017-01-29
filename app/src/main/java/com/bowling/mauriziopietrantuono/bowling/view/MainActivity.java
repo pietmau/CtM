@@ -1,12 +1,8 @@
 package com.bowling.mauriziopietrantuono.bowling.view;
 
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +18,6 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements MainView {
     Presenter presenter;
     @BindView(R.id.play) EditText editText;
-    @BindView(R.id.activity_main) View root;
     @BindView(R.id.score) TextView scoreView;
 
     @Override

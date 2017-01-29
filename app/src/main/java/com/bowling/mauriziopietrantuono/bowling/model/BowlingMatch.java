@@ -10,13 +10,12 @@ import static java.util.Collections.unmodifiableList;
 public class BowlingMatch {
     private final List<Ball> balls = new ArrayList<>();
 
-    public boolean playBall(int score) throws InvalidPlayException {
+    public void playBall(int score) throws InvalidPlayException {
         if (score < 0 || score > 10) {
             throw new InvalidPlayException("Invalid play");
         }
         checkBalls();
         balls.add(new Ball(score));
-        return true;
     }
 
     private void checkBalls() throws InvalidPlayException {
@@ -32,7 +31,6 @@ public class BowlingMatch {
         for (; currentBall < balls.size() && numberOfFrames < MAX_NUMBER_OF_FRAMES; currentBall++) {
             if (isAStrike(currentBall)) {
                 numberOfFrames++;
-                continue;
             } else {
                 if (!isTheLastBall(currentBall)) {
                     numberOfFrames++;

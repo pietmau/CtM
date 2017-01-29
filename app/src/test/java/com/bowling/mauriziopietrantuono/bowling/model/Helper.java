@@ -1,7 +1,7 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
 
-public class Helper {
+class Helper {
 
     public static int makeSomeNineFrames(BowlingMatch match) throws InvalidPlayException {
         int score = 0;

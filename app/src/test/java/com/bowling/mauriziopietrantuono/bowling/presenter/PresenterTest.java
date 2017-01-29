@@ -46,7 +46,8 @@ public class PresenterTest {
 
     @Test
     public void when_invalidPlay_then_userAlerted() throws InvalidPlayException {
-        when(bowlingMatch.playBall(anyInt())).thenThrow(new InvalidPlayException(MESSAGE));
+        doThrow(new InvalidPlayException(MESSAGE)).when(bowlingMatch).playBall(anyInt());
+
         when(view.getPlay()).thenReturn("2");
         // WHEN
 
@@ -57,7 +58,7 @@ public class PresenterTest {
 
     @Test
     public void when_nvalidPlay_then_scoreIsUpdated() throws InvalidPlayException {
-        when(bowlingMatch.playBall(anyInt())).thenReturn(true);
+        //when(bowlingMatch.playBall(anyInt())).thenReturn(true);
         when(scorer.score(any(BowlingMatch.class))).thenReturn(100);
         when(view.getPlay()).thenReturn("2");
         // WHEN

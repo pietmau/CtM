@@ -1,7 +1,7 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
 
-public class Ball {
+class Ball {
     private final int score;
 
     public Ball(int score) {

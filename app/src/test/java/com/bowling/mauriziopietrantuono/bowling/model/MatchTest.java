@@ -39,7 +39,7 @@ public class MatchTest {
         // GIVEN
         BowlingMatch match = new BowlingMatch();
         // THEN
-        assertTrue(match.playBall(10));
+        match.playBall(10);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -63,8 +63,8 @@ public class MatchTest {
             match.playBall(10);
         }
         // this should be OK
-        assertTrue(match.playBall(5));
-        assertTrue(match.playBall(5));
+        match.playBall(5);
+        match.playBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -76,11 +76,11 @@ public class MatchTest {
             match.playBall(10);
         }
         // this should be OK
-        assertTrue(match.playBall(5));
-        assertTrue(match.playBall(5));
+        match.playBall(5);
+        match.playBall(5);
 
         // this should not be possible
-        assertTrue(match.playBall(5));
+        match.playBall(5);
     }
 
     @Test
@@ -92,11 +92,11 @@ public class MatchTest {
             match.playBall(10);
         }
         //last frame
-        assertTrue(match.playBall(5));
-        assertTrue(match.playBall(5));
+        match.playBall(5);
+        match.playBall(5);
 
         // this should be OK
-        assertTrue(match.playBall(5));
+        match.playBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -108,14 +108,14 @@ public class MatchTest {
             match.playBall(10);
         }
         //last frame
-        assertTrue(match.playBall(5));
-        assertTrue(match.playBall(5));
+        match.playBall(5);
+        match.playBall(5);
 
         // this should be OK
-        assertTrue(match.playBall(5));
+        match.playBall(5);
 
         // this should not be possible
-        assertTrue(match.playBall(5));
+        match.playBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -144,8 +144,8 @@ public class MatchTest {
         match.playBall(10);
 
         // this should be OK
-        assertTrue(match.playBall(5));
-        assertTrue(match.playBall(5));
+        match.playBall(5);
+        match.playBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -159,11 +159,11 @@ public class MatchTest {
         match.playBall(10);
 
         // this should be OK
-        assertTrue(match.playBall(5));
-        assertTrue(match.playBall(5));
+        match.playBall(5);
+        match.playBall(5);
 
         // this should not be possible
-        assertTrue(match.playBall(5));
+        match.playBall(5);
     }
 
     @Test
@@ -174,11 +174,11 @@ public class MatchTest {
         makeNineFrames(match);
 
         //last frame
-        assertTrue(match.playBall(5));
-        assertTrue(match.playBall(5));
+        match.playBall(5);
+        match.playBall(5);
 
         // this should be OK
-        assertTrue(match.playBall(5));
+        match.playBall(5);
     }
 
     @Test(expected = InvalidPlayException.class)
@@ -189,14 +189,14 @@ public class MatchTest {
         makeNineFrames(match);
 
         //last frame
-        assertTrue(match.playBall(5));
-        assertTrue(match.playBall(5));
+        match.playBall(5);
+        match.playBall(5);
 
         // this should be OK
-        assertTrue(match.playBall(5));
+        match.playBall(5);
 
         // this should not be possible
-        assertTrue(match.playBall(5));
+        match.playBall(5);
     }
 
     private void makeNineFrames(BowlingMatch match) throws InvalidPlayException {

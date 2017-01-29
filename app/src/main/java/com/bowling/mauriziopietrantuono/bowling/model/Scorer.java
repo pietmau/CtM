@@ -24,7 +24,6 @@ public class Scorer {
                 score += MAX_SCORE;
                 i++;
                 score += getNextScore(i);
-                continue;
 
             } else {
                 score += balls.get(i).getScore();

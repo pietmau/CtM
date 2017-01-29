@@ -42,8 +42,8 @@ public class RandomMatchTest {
             match.playBall(10);
 
             // this should be OK
-            assertTrue(match.playBall(5));
-            assertTrue(match.playBall(5));
+            match.playBall(5);
+            match.playBall(5);
         }
     }
 
@@ -58,12 +58,12 @@ public class RandomMatchTest {
             match.playBall(10);
 
             // this should be OK
-            assertTrue(match.playBall(5));
-            assertTrue(match.playBall(5));
+            match.playBall(5);
+            match.playBall(5);
 
             try {
                 // this should not be possible
-                assertTrue(match.playBall(5));
+                match.playBall(5);
                 fail();
             } catch (InvalidPlayException e) {
             }
@@ -78,10 +78,10 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             //last frame
-            assertTrue(match.playBall(5));
-            assertTrue(match.playBall(5));
+            match.playBall(5);
+            match.playBall(5);
             // thsi should be possible
-            assertTrue(match.playBall(5));
+            match.playBall(5);
         }
     }
 
@@ -93,11 +93,11 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             //last frame
-            assertTrue(match.playBall(5));
-            assertTrue(match.playBall(5));
+            match.playBall(5);
+            match.playBall(5);
 
             // this should be possible
-            assertTrue(match.playBall(5));
+            match.playBall(5);
         }
     }
 
@@ -110,14 +110,14 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             // last frame
-            assertTrue(match.playBall(5));
-            assertTrue(match.playBall(5));
+            match.playBall(5);
+            match.playBall(5);
 
             // this should be OK
-            assertTrue(match.playBall(5));
+            match.playBall(5);
             try {
                 // this should not be possible
-                assertTrue(match.playBall(5));
+                match.playBall(5);
                 fail();
             } catch (InvalidPlayException e) {
             }
@@ -132,14 +132,14 @@ public class RandomMatchTest {
             makeNineRandomFrames(match);
 
             //last frame
-            assertTrue(match.playBall(5));
-            assertTrue(match.playBall(5));
+            match.playBall(5);
+            match.playBall(5);
 
             // this should be OK
-            assertTrue(match.playBall(5));
+            match.playBall(5);
             try {
                 // this should not be possible
-                assertTrue(match.playBall(5));
+                match.playBall(5);
                 fail();
             } catch (InvalidPlayException e) {
             }

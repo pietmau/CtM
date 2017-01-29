@@ -8,8 +8,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static com.bowling.mauriziopietrantuono.bowling.model.Helper.makeSomeNineFrames;
 import static com.bowling.mauriziopietrantuono.bowling.model.Helper.makeSomeOtherNineFrames;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ScorerText {
