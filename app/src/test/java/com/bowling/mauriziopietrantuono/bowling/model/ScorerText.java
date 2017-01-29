@@ -116,7 +116,6 @@ public class ScorerText {
         assertEquals(score, scorer.score(match));
     }
 
-
     @Test
     public void lastIsStrike() throws InvalidPlayException {
         BowlingMatch match = new BowlingMatch();

@@ -15,29 +15,59 @@ public class Scorer {
         frames = match.getFrames();
         bonuses = match.getBonuses();
 
-        for (int i = 0; i < frames.size(); i++) {
-            if (frames.get(i).isAStrike()) {
+        for (int framesIndex = 0; framesIndex < frames.size(); framesIndex++) {
+            if (frames.get(framesIndex).isAStrike()) {
                 score += MAX_SCORE;
-                score += getNextTwoScores(i);
+                score += getNextTwoScores(framesIndex);
                 continue;
             }
-            if (frames.get(i).isASpare()) {
+            if (frames.get(framesIndex).isASpare()) {
                 score += MAX_SCORE;
-                score += getNextScore(i);
+                score += getNextScore(framesIndex);
                 continue;
             }
-            score += frames.get(i).getScore();
+            score += frames.get(framesIndex).getScore();
         }
         return score;
     }
 
-    private int getNextScore(int i) {
-        return 0;
+
+    private int getNextTwoScores(int framesIndex) {
+        int score = 0;
+        if (framesIndex > (frames.size() + bonuses.size()) - 1) {
+            return score;
+        }
+        if (framesIndex < frames.size() - 2) {
+            score += getNextTwoFramesScores(framesIndex);
+            return score;
+        }
+
+        if (framesIndex < frames.size() - 1) {
+            score += getNextScore(framesIndex);
+        }
+        return score;
     }
 
-    private int getNextTwoScores(int i) {
-        return 0;
+    private int getNextTwoFramesScores(int framesIndex) {
+        int score = 0;
+        if (!frames.get(framesIndex + 1).isAStrike()) {
+            score += frames.get(framesIndex + 1).getScore();
+            return score;
+        }
+        score += MAX_SCORE;
+        framesIndex++;
+        score += getNextScore(framesIndex);
+        return score;
     }
 
+    private int getNextScore(int framesIndex) {
+        if (framesIndex < frames.size() - 1) {
+            return frames.get(framesIndex + 1).first.getScore();
+        }
+        if (framesIndex < frames.size() + bonuses.size() - 1) {
+            return bonuses.get((framesIndex + 1) - frames.size()).getScore();
+        }
+        return 0;
+    }
 
 }

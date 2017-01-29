@@ -7,4 +7,8 @@ public class Bonus {
     public Bonus(int score) {
         this.ball = new Ball(score);
     }
+
+    public int getScore(){
+        return ball.getScore();
+    }
 }
