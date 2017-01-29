@@ -20,7 +20,22 @@ public final class Match {
         if (count >= 22) {
             throw new InvalidPlayException(balls.size());
         }
+        if (!canPlayNext()) {
+            throw new InvalidPlayException(balls.size());
+        }
+    }
 
+    private boolean canPlayNext() {
+        int count = 20;
+        for (int i = 0; i < balls.size() - 2; i++) {
+            Ball ball = balls.get(i);
+            if (ball.getScore() == 10) {
+                count -= 2;
+            } else {
+                count--;
+            }
+        }
+        return count > 0;
     }
 
 

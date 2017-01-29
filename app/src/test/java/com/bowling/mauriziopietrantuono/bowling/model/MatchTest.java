@@ -1,7 +1,5 @@
 package com.bowling.mauriziopietrantuono.bowling.model;
 
-import com.bowling.mauriziopietrantuono.bowling.model.frame.SpareFrame;
-import com.bowling.mauriziopietrantuono.bowling.model.frame.StrikeFrame;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -72,6 +70,19 @@ public class MatchTest {
         for (int i = 0; i < 10; i++) {
             match.playBall(10);
         }
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+    }
+
+    @Test(expected = InvalidPlayException.class)
+    public void when_playAllStrikes_then_IgetTwoBonusesOnly() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        for (int i = 0; i < 10; i++) {
+            match.playBall(10);
+        }
+        assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
     }
