@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -62,6 +64,7 @@ public class MatchTest {
         for (int i = 0; i < 10; i++) {
             match.playBall(10);
         }
+        // this should be OK
         assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
     }
@@ -74,8 +77,11 @@ public class MatchTest {
         for (int i = 0; i < 10; i++) {
             match.playBall(10);
         }
+        // this should be OK
         assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
+
+        // this should not be possible
         assertTrue(match.playBall(5));
     }
 
@@ -87,8 +93,11 @@ public class MatchTest {
         for (int i = 0; i < 9; i++) {
             match.playBall(10);
         }
+        //last frame
         assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
+
+        // this should be OK
         assertTrue(match.playBall(5));
     }
 
@@ -100,9 +109,14 @@ public class MatchTest {
         for (int i = 0; i < 9; i++) {
             match.playBall(10);
         }
+        //last frame
         assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
+
+        // this should be OK
         assertTrue(match.playBall(5));
+
+        // this should not be possible
         assertTrue(match.playBall(5));
     }
 
@@ -117,8 +131,8 @@ public class MatchTest {
         match.playBall(0);
         match.playBall(0);
 
+        // this should not be possible
         match.playBall(0);
-
     }
 
     @Test
@@ -127,9 +141,11 @@ public class MatchTest {
         Match match = new Match();
         // THEN
         makeNineFrames(match);
+
         //last frame
         match.playBall(10);
 
+        // this should be OK
         assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
     }
@@ -144,9 +160,11 @@ public class MatchTest {
         //last frame
         match.playBall(10);
 
+        // this should be OK
         assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
 
+        // this should not be possible
         assertTrue(match.playBall(5));
     }
 
@@ -161,10 +179,27 @@ public class MatchTest {
         assertTrue(match.playBall(5));
         assertTrue(match.playBall(5));
 
+        // this should be OK
         assertTrue(match.playBall(5));
     }
 
+    @Test(expected = InvalidPlayException.class)
+    public void when_lastSPare_then_IgetOneMoreOnly() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        makeNineFrames(match);
 
+        //last frame
+        assertTrue(match.playBall(5));
+        assertTrue(match.playBall(5));
+
+        // this should be OK
+        assertTrue(match.playBall(5));
+
+        // this should not be possible
+        assertTrue(match.playBall(5));
+    }
 
     private void makeNineFrames(Match match) throws InvalidPlayException {
         match.playBall(10);
@@ -189,8 +224,5 @@ public class MatchTest {
 
         match.playBall(5);
         match.playBall(5);
-
     }
-
-
 }
