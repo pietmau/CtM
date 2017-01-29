@@ -33,5 +33,37 @@ public class ScorerText {
         assertEquals(10, scorer.score());
     }
 
+    @Test
+    public void when_strikeAndOtherTwoPlayes_scoreIsCorrect() throws InvalidPlayException {
+        // GIVEN
+        Match match = new Match();
+
+
+        match.playBall(10);
+        int firstFrameScore = 10 + 5 + 5;
+        match.playBall(5);
+        match.playBall(5);
+        int secondFrameScore = 10;
+        Scorer scorer = new Scorer(match);
+        assertEquals(firstFrameScore + secondFrameScore, scorer.score());
+    }
+
+    @Test
+    public void when_TwostrikeAndOtherTwoPlayes_scoreIsCorrect() throws InvalidPlayException {
+        Match match = new Match();
+
+        //first frame
+        match.playBall(10);
+        int firstFrameScore = 10 + 10 + 5;
+        // second frame
+        match.playBall(10);
+        int seconfFrameScore = 10 + 5 + 5;
+        // third frame
+        match.playBall(5);
+        match.playBall(5);
+        int thirdFrameScore = 10;
+        Scorer scorer = new Scorer(match);
+        assertEquals(firstFrameScore + seconfFrameScore + thirdFrameScore, scorer.score());
+    }
 
 }
