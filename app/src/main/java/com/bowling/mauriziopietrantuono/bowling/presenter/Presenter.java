@@ -3,6 +3,7 @@ package com.bowling.mauriziopietrantuono.bowling.presenter;
 
 import com.bowling.mauriziopietrantuono.bowling.model.BowlingMatch;
 import com.bowling.mauriziopietrantuono.bowling.model.InvalidPlayException;
+import com.bowling.mauriziopietrantuono.bowling.model.Representer;
 import com.bowling.mauriziopietrantuono.bowling.model.Scorer;
 import com.bowling.mauriziopietrantuono.bowling.view.MainView;
 
@@ -10,10 +11,12 @@ public class Presenter {
     private MainView view;
     private final BowlingMatch bowlingMatch;
     private final Scorer scorer;
+    private final Representer representer;
 
-    public Presenter(BowlingMatch bowlingMatch, Scorer scorer) {
+    public Presenter(BowlingMatch bowlingMatch, Scorer scorer, Representer representer) {
         this.bowlingMatch = bowlingMatch;
         this.scorer = scorer;
+        this.representer = representer;
     }
 
     public void bind(MainView view) {
@@ -41,5 +44,6 @@ public class Presenter {
 
     private void updateView() {
         view.setScore(scorer.score(bowlingMatch));
+        view.setRepresentation(representer.represent(bowlingMatch));
     }
 }

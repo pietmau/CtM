@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.bowling.mauriziopietrantuono.bowling.R;
 import com.bowling.mauriziopietrantuono.bowling.model.BowlingMatch;
+import com.bowling.mauriziopietrantuono.bowling.model.Representer;
 import com.bowling.mauriziopietrantuono.bowling.model.Scorer;
 import com.bowling.mauriziopietrantuono.bowling.presenter.Presenter;
 
@@ -19,13 +20,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
     Presenter presenter;
     @BindView(R.id.play) EditText editText;
     @BindView(R.id.score) TextView scoreView;
+    @BindView(R.id.representation) TextView representationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        presenter = new Presenter(new BowlingMatch(), new Scorer());
+        presenter = new Presenter(new BowlingMatch(), new Scorer(), new Representer());
         presenter.bind(this);
     }
 
@@ -52,5 +54,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void setScore(int score) {
         scoreView.setText(Integer.toString(score));
+    }
+
+    @Override
+    public void setRepresentation(String representation){
+        representationView.setText(representation);
     }
 }

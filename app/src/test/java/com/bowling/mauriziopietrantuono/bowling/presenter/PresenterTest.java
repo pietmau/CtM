@@ -2,6 +2,7 @@ package com.bowling.mauriziopietrantuono.bowling.presenter;
 
 import com.bowling.mauriziopietrantuono.bowling.model.BowlingMatch;
 import com.bowling.mauriziopietrantuono.bowling.model.InvalidPlayException;
+import com.bowling.mauriziopietrantuono.bowling.model.Representer;
 import com.bowling.mauriziopietrantuono.bowling.model.Scorer;
 import com.bowling.mauriziopietrantuono.bowling.view.MainView;
 
@@ -26,10 +27,11 @@ public class PresenterTest {
     @Mock MainView view;
     @Mock BowlingMatch bowlingMatch;
     @Mock Scorer scorer;
+    @Mock Representer representer;
 
     @Before
     public void setUp() throws Exception {
-        presenter = new Presenter(bowlingMatch, scorer);
+        presenter = new Presenter(bowlingMatch, scorer, representer);
         presenter.bind(view);
     }
 

@@ -8,4 +8,6 @@ public interface MainView {
     void setError(String message);
 
     void setScore(int score);
+
+    void setRepresentation(String representation);
 }

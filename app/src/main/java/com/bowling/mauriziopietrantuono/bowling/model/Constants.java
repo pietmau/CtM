@@ -7,6 +7,7 @@ final class Constants {
     static final String STRIKE = "X";
     static final String SPARE = "/";
     static final String SEPARATOR = "|";
+    static final String ZERO = "-";
 
     private Constants() {
     }
