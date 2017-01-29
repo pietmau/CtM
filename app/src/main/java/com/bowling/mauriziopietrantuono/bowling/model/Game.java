@@ -22,9 +22,11 @@ public class Game {
     void setBall(Ball ball) {
         if (firstBall == null) {
             firstBall = ball;
+            return;
         }
-        if(secondBall==null){
-            secondBall=ball;
+        if (secondBall == null) {
+            secondBall = ball;
+            return;
         }
         new RuntimeException();
     }

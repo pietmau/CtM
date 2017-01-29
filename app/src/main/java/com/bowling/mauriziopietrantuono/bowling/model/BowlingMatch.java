@@ -43,20 +43,43 @@ public class BowlingMatch {
             Frame frame = new Frame();
             frame.first = new Ball(score);
             frames.add(frame);
+            if (islastFrame()) {
+                if (lastFrameIsAStrike()) {
+                    numberOfBounusesReceived = 2;
+                } else if (lastFrameIsASpare()) {
+                    numberOfBounusesReceived = 1;
+                }
+            }
+            return;
         }
         currentGame.setBall(new Ball(score));
+
         if (currentGame.isFinished()) {
             Frame frame = new Frame();
             frame.first = currentGame.firstBall;
             frame.second = currentGame.secondBall;
             frames.add(frame);
             currentGame = new Game();
+            if (islastFrame()) {
+                if (lastFrameIsAStrike()) {
+                    numberOfBounusesReceived = 2;
+                } else if (lastFrameIsASpare()) {
+                    numberOfBounusesReceived = 1;
+                }
+            }
         }
-        if (islastGrame()) {
-        }
+
     }
 
-    private boolean islastGrame() {
+    private boolean lastFrameIsASpare() {
+        return (frames.get(MAX_NUMBER_OF_FRAMES - 1).first.getScore() + frames.get(MAX_NUMBER_OF_FRAMES - 1).second.getScore()) == MAX_SCORE;
+    }
+
+    private boolean lastFrameIsAStrike() {
+        return frames.get(MAX_NUMBER_OF_FRAMES - 1).first.getScore() == MAX_SCORE;
+    }
+
+    private boolean islastFrame() {
         return frames.size() == MAX_NUMBER_OF_FRAMES;
     }
 
