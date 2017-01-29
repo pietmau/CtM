@@ -37,5 +37,14 @@ public class CalculatorTest {
         fail();
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void when_add_0frames_andCalculate_exceptionIsTrown() {
+        // WHEN
+        Match match = new Match();
+        match.addFrame(new StrikeFrame());
+        match.calculate();
+        fail();
+    }
+
 
 }
