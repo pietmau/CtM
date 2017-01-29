@@ -5,7 +5,7 @@ import com.bowling.mauriziopietrantuono.bowling.model.Ball;
 
 public class SpareFrame extends Frame {
 
-    public SpareFrame(Frame nextFrame, Ball firstBall, Ball secondBall) {
+    public SpareFrame(Ball firstBall, Ball secondBall) {
         super(firstBall, secondBall);
     }
 

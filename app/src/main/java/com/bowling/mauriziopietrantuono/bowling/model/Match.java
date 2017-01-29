@@ -22,7 +22,7 @@ public final class Match {
     }
 
     private void addSpareOrMiss(int score) {
-        frames.add(new SpareFrame(score, 0));
+        frames.add(new SpareFrame(new Ball(score), new Ball(0)));
     }
 
 
