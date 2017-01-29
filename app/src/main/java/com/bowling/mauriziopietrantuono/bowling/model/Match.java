@@ -5,16 +5,20 @@ import com.bowling.mauriziopietrantuono.bowling.model.frame.Frame;
 public class Match {
     private Frame head = null;
 
-    private boolean addFrame(Frame frame) {
+    private void addFrame(Frame frame) {
         if (head == null) {
             head = frame;
-            return true;
+            return;
         }
         checkMaxNumberOfFrames();
-        return appendFrame(frame);
+        appendFrame(frame);
     }
 
-    private boolean appendFrame(Frame frame) {
+    public boolean playBall(int score) {
+        return true;
+    }
+
+    private void appendFrame(Frame frame) {
         Frame temp = head;
         while (temp.nextFrame != null) {
             temp = temp.nextFrame;

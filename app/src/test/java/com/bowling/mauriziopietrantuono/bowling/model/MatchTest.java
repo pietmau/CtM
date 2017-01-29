@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -18,4 +20,11 @@ public class MatchTest {
         // THEN
     }
 
+    @Test
+    public void given_match_canPlayBall() {
+        // GIVEN
+        Match match = new Match();
+        // THEN
+        match.playBall(5);
+    }
 }
