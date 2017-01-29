@@ -92,7 +92,7 @@ public class ScorerText {
         match.playBall(10);
         score = score + 10 + 10 + 10;
         Scorer scorer = new Scorer(match);
-       // assertEquals(score, scorer.score());
+        assertEquals(score, scorer.score());
     }
 
 
