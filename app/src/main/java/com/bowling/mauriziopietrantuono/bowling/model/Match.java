@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Match {
-    private static final int MAX_BALLS_COUNT = 22;
+    private static final int MAX_NUMBER_OF_FRAMES = 10;
+    private static final int MAX_SCORE = 10;
     List<Ball> balls = new ArrayList<>();
 
     public boolean playBall(int score) throws InvalidPlayException {
@@ -17,10 +18,6 @@ public final class Match {
     }
 
     private void checkBalls() throws InvalidPlayException {
-        int count = balls.size();
-        if (count >= 22) {
-            throw new InvalidPlayException(balls.size());
-        }
         if (!canPlayNext()) {
             throw new InvalidPlayException(balls.size());
         }
@@ -29,33 +26,49 @@ public final class Match {
     private boolean canPlayNext() {
         int numberOfFrames = 0;
         int currentBall = 0;
-        for (; currentBall < balls.size() && numberOfFrames < 10; currentBall++) {
-            if (balls.get(currentBall).getScore() == 10) {
+
+        for (; currentBall < balls.size() && numberOfFrames < MAX_NUMBER_OF_FRAMES; currentBall++) {
+            if (isAStrike(currentBall)) {
                 numberOfFrames++;
                 continue;
             } else {
-                if (currentBall < balls.size() - 1) {
+                if (!isTheLastBall(currentBall)) {
                     numberOfFrames++;
                     currentBall++;
                 }
             }
         }
-        if (numberOfFrames < 10) {
+        if (numberOfFrames < MAX_NUMBER_OF_FRAMES) {
             return true;
         }
 
-        if (balls.get(currentBall - 1).getScore() == 10) {
+        if (isLastFrameAStrike(currentBall)) {
             return (balls.size() - currentBall + 1) <= 2;
         }
 
-        int latsPlay = balls.get(currentBall - 1).getScore();
-        int secondLastplay = balls.get(currentBall - 2).getScore();
-
-        if ((latsPlay + secondLastplay) == 10) {
+        if (isLastFrameASpare(currentBall)) {
             return (balls.size() - currentBall + 1) <= 1;
         }
 
         return false;
+    }
+
+    private boolean isTheLastBall(int currentBall) {
+        return !(currentBall < balls.size() - 1);
+    }
+
+    private boolean isAStrike(int currentBall) {
+        return balls.get(currentBall).getScore() == MAX_SCORE;
+    }
+
+    private boolean isLastFrameAStrike(int currentBall) {
+        return isAStrike(currentBall - 1);
+    }
+
+    private boolean isLastFrameASpare(int currentBall) {
+        int latsPlay = balls.get(currentBall - 1).getScore();
+        int secondLastplay = balls.get(currentBall - 2).getScore();
+        return (latsPlay + secondLastplay) == MAX_SCORE;
     }
 
 
