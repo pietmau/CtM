@@ -5,16 +5,16 @@ import com.bowling.mauriziopietrantuono.bowling.model.frame.Frame;
 public class Match {
     private Frame head = null;
 
-    public void addFrame(Frame frame) {
+    private boolean addFrame(Frame frame) {
         if (head == null) {
             head = frame;
-            return;
+            return true;
         }
         checkMaxNumberOfFrames();
-        appendFrame(frame);
+        return appendFrame(frame);
     }
 
-    private void appendFrame(Frame frame) {
+    private boolean appendFrame(Frame frame) {
         Frame temp = head;
         while (temp.nextFrame != null) {
             temp = temp.nextFrame;
@@ -23,24 +23,24 @@ public class Match {
     }
 
     private void checkMaxNumberOfFrames() {
-        Frame temp = head;
-        int count = 0;
-        while (temp != null) {
-            count++;
-            temp = temp.nextFrame;
-        }
+        int count = getCountOfFrames();
         if (count > 10) {
             throw new IllegalArgumentException("Invalid match " + count + " frames!");
         }
     }
 
-    private void checkMinNumberOfFrames() {
+    private int getCountOfFrames() {
         Frame temp = head;
         int count = 0;
         while (temp != null) {
             count++;
             temp = temp.nextFrame;
         }
+        return count;
+    }
+
+    private void checkMinNumberOfFrames() {
+        int count = getCountOfFrames();
         if (count < 10) {
             throw new IllegalArgumentException("Invalid match " + count + " frames!");
         }
