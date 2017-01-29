@@ -12,7 +12,7 @@ public class BowlingMatch {
 
     public void playBall(int score) throws InvalidPlayException {
         if (score < 0 || score > 10) {
-            throw new InvalidPlayException("Invalid play");
+            throw new InvalidPlayException("Invalid score");
         }
         checkBalls(score);
         balls.add(new Ball(score));
@@ -20,7 +20,7 @@ public class BowlingMatch {
 
     private void checkBalls(int score) throws InvalidPlayException {
         if (!canPlayNext()) {
-            throw new InvalidPlayException(balls.size());
+            throw new InvalidPlayException("Too many plays " + balls.size() + "!");
         }
         if (!isValidSequence(score)) {
             throw new InvalidPlayException("Invalid play");
@@ -34,17 +34,18 @@ public class BowlingMatch {
         for (; currentBall < balls.size() && numberOfFrames < MAX_NUMBER_OF_FRAMES; currentBall++) {
             if (isAStrike(currentBall)) {
                 numberOfFrames++;
-            } else {
-                if (!isTheLastBall(currentBall)) {
-                    numberOfFrames++;
-                    currentBall++;
-                } else {
-                    if ((balls.get(currentBall).getScore() + score) > 10) {
-                        return false;
-                    }
-                }
+                continue;
             }
+            if (isTheLastBall(currentBall)) {
+                if (sumIsBiggerThanTen(score, currentBall)) {
+                    return false;
+                }
+                continue;
+            }
+            numberOfFrames++;
+            currentBall++;
         }
+
         if (numberOfFrames >= MAX_NUMBER_OF_FRAMES) {
             return true;
         }
@@ -54,6 +55,10 @@ public class BowlingMatch {
         }
 
         return true;
+    }
+
+    private boolean sumIsBiggerThanTen(int score, int currentBall) {
+        return (balls.get(currentBall).getScore() + score) > 10;
     }
 
     private boolean canPlayNext() {
@@ -87,7 +92,7 @@ public class BowlingMatch {
     }
 
     private boolean isTheLastBall(int currentBall) {
-        return (currentBall >= balls.size() - 1);
+        return currentBall >= balls.size() - 1;
     }
 
     private boolean isAStrike(int currentBall) {

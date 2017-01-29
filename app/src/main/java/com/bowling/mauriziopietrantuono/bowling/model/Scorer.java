@@ -37,7 +37,7 @@ public class Scorer {
     }
 
     private boolean isLastBall(int i) {
-        return (i >= balls.size());
+        return i >= balls.size();
     }
 
     private int getNextScore(int i) {

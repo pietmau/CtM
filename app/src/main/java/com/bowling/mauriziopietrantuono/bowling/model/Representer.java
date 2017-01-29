@@ -16,9 +16,32 @@ public class Representer {
     public String represent(BowlingMatch match) {
         StringBuilder stringBuilder = new StringBuilder();
         balls = match.getBalls();
-        int i = 0, frames = 0;
+        int currentBall = 0;
 
-        for (; i < balls.size() && frames < MAX_NUMBER_OF_FRAMES; i++, frames++) {
+        currentBall = appendRegularFrames(stringBuilder, currentBall);
+
+        stringBuilder.append(SEPARATOR);
+
+        appendBonusFrames(stringBuilder, currentBall);
+        return stringBuilder.toString();
+    }
+
+
+
+    private void appendBonusFrames(StringBuilder stringBuilder, int currentBall) {
+        if (currentBall < balls.size()) {
+            for (int j = currentBall; j < balls.size(); j++) {
+                if (balls.get(j).getScore() == 10) {
+                    stringBuilder.append(STRIKE);
+                } else {
+                    stringBuilder.append(balls.get(j).getScore());
+                }
+            }
+        }
+    }
+
+    private int appendRegularFrames(StringBuilder stringBuilder, int i) {
+        for (int frames = 0; i < balls.size() && frames < MAX_NUMBER_OF_FRAMES; i++, frames++) {
             if (isaStrike(i)) {
                 appendStrike(stringBuilder);
                 continue;
@@ -27,35 +50,23 @@ public class Representer {
                 appendSpare(stringBuilder, i);
                 i++;
             } else {
-                if (balls.get(i).getScore() != 0) {
-                    stringBuilder.append(balls.get(i).getScore());
-                } else{
-                    stringBuilder.append(ZERO);
-                }
+                appendNumberOrDash(stringBuilder, i);
                 i++;
                 if (!isLastBall(i)) {
-                    if (balls.get(i).getScore() != 0) {
-                        stringBuilder.append(balls.get(i).getScore());
-                    } else{
-                        stringBuilder.append(ZERO);
-                    }
+                    appendNumberOrDash(stringBuilder, i);
                 }
                 stringBuilder.append(SEPARATOR);
             }
         }
-        stringBuilder.append(SEPARATOR);
+        return i;
+    }
 
-        if (i < balls.size()) {
-            for (int j = i; j < balls.size(); j++) {
-                if (balls.get(j).getScore() == 10) {
-                    stringBuilder.append(STRIKE);
-                } else {
-                    stringBuilder.append(balls.get(j).getScore());
-                }
-            }
+    private void appendNumberOrDash(StringBuilder stringBuilder, int i) {
+        if (balls.get(i).getScore() != 0) {
+            stringBuilder.append(balls.get(i).getScore());
+        } else {
+            stringBuilder.append(ZERO);
         }
-
-        return stringBuilder.toString();
     }
 
     private void appendSpare(StringBuilder stringBuilder, int i) {
