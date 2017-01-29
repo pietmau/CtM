@@ -43,6 +43,7 @@ public class Presenter {
     }
 
     private void updateView() {
+        view.setPlayScore(null);
         view.setScore(scorer.score(bowlingMatch));
         view.setRepresentation(representer.represent(bowlingMatch));
     }

@@ -60,4 +60,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
     public void setRepresentation(String representation){
         representationView.setText(representation);
     }
+
+    @Override
+    public void setPlayScore(String s) {
+        editText.setText(s);
+    }
 }

@@ -59,7 +59,7 @@ public class PresenterTest {
     }
 
     @Test
-    public void when_nvalidPlay_then_scoreIsUpdated() throws InvalidPlayException {
+    public void when_validPlay_then_scoreIsUpdated() throws InvalidPlayException {
         //when(bowlingMatch.playBall(anyInt())).thenReturn(true);
         when(scorer.score(any(BowlingMatch.class))).thenReturn(100);
         when(view.getPlay()).thenReturn("2");
@@ -68,5 +68,30 @@ public class PresenterTest {
         presenter.onGoClicked();
         // THEN
         verify(view).setScore(100);
+    }
+
+    @Test
+    public void when_validPlay_then_edittextIsUpdated() throws InvalidPlayException {
+        //when(bowlingMatch.playBall(anyInt())).thenReturn(true);
+        when(scorer.score(any(BowlingMatch.class))).thenReturn(100);
+        when(view.getPlay()).thenReturn("2");
+        // WHEN
+
+        presenter.onGoClicked();
+        // THEN
+        verify(view).setPlayScore(null);
+    }
+
+    @Test
+    public void when_validPlay_then_representationIsUpdated() throws InvalidPlayException {
+        //when(bowlingMatch.playBall(anyInt())).thenReturn(true);
+        when(scorer.score(any(BowlingMatch.class))).thenReturn(100);
+        when(representer.represent(any(BowlingMatch.class))).thenReturn(MESSAGE);
+        when(view.getPlay()).thenReturn("2");
+        // WHEN
+
+        presenter.onGoClicked();
+        // THEN
+        verify(view).setRepresentation(MESSAGE);
     }
 }

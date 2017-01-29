@@ -10,4 +10,6 @@ public interface MainView {
     void setScore(int score);
 
     void setRepresentation(String representation);
+
+    void setPlayScore(String s);
 }
