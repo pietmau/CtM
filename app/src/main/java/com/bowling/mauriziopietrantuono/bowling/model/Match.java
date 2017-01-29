@@ -16,9 +16,11 @@ public final class Match {
     }
 
     private void checkBalls() throws InvalidPlayException {
-        if (balls.size() > 10) {
+        int count = balls.size();
+        if (count >= 22) {
             throw new InvalidPlayException(balls.size());
         }
+
     }
 
 

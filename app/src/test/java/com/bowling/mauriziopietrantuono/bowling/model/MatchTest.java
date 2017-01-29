@@ -46,11 +46,11 @@ public class MatchTest {
     }
 
     @Test(expected = InvalidPlayException.class)
-    public void when_playMoreThanTenMiss_then_Exception() throws InvalidPlayException {
+    public void when_playMoreThanTwentyMiss_then_Exception() throws InvalidPlayException {
         // GIVEN
         Match match = new Match();
         // THEN
-        for (int i = 0; i <= 11; i++) {
+        for (int i = 0; i <= 22; i++) {
             match.playBall(5);
         }
         fail();
